@@ -4,9 +4,9 @@ const nextConfig = {
       return [
         {
           source: "/",
-          destination: "/placeholder",
-          permanent: true,
-        },
+          destination: "/coming-soon",
+          permanent: false,
+        }
       ];
     },
   };

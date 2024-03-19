@@ -1,7 +1,8 @@
 import { spaceGrotesk, spaceMono } from "@/app/models/fonts";
 import { SiteImage } from "@/app/models/images";
+import { SiteLinks } from "@/app/models/links";
 
-export default async function PlaceholderPage({ params }: any) {
+export default async function ComingSoonPage({ params }: any) {
   return (
     <>
       <div className="relative w-full h-screen overflow-auto flex justify-center items-center">
@@ -22,14 +23,13 @@ export default async function PlaceholderPage({ params }: any) {
           <div className="flex-1">
             <div className="w-full h-full flex-col flex justify-end items-center">
               {/* Logo */}           
-              <a href="https://twitter.com/CoachChuckFF">
+              <a href={SiteLinks.twitter}>
               <img
                 src={SiteImage.logoFlat}
                 alt="Logo"
                 className="mb-3 h-52 md:h-72 aspect-auto hover:animate-pulse cursor-pointer"
               />
-              </a> 
-
+              </a>
             </div>
           </div>
 
