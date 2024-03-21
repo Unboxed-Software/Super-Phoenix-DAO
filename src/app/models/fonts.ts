@@ -1,4 +1,4 @@
-import { Space_Mono, Space_Grotesk } from "next/font/google";
+import { Space_Mono, Space_Grotesk, Maven_Pro } from "next/font/google";
 
 export const spaceMono = Space_Mono({
     subsets: ["latin"],
@@ -9,4 +9,10 @@ export const spaceGrotesk = Space_Grotesk({
     subsets: ["latin"],
     weight: "300"
 }); 
+
+export const mavenPro = Maven_Pro({
+    subsets: ["latin"],
+    weight: "400"
+});
+    
 

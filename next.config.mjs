@@ -6,7 +6,12 @@ const nextConfig = {
           source: "/",
           destination: "/coming-soon",
           permanent: false,
-        }
+        },
+        {
+            source: "/placeholder",
+            destination: "/coming-soon",
+            permanent: true,
+          }
       ];
     },
   };

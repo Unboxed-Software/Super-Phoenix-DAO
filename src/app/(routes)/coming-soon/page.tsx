@@ -1,4 +1,4 @@
-import { spaceGrotesk, spaceMono } from "@/app/models/fonts";
+import { mavenPro, spaceMono } from "@/app/models/fonts";
 import { SiteImage } from "@/app/models/images";
 import { SiteLinks } from "@/app/models/links";
 
@@ -10,7 +10,7 @@ export default async function ComingSoonPage({ params }: any) {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
-            backgroundImage: `url("${SiteImage.background}")`,
+            backgroundImage: `url("${SiteImage.backgroundV2}")`,
           }}
         ></div>
 
@@ -25,7 +25,7 @@ export default async function ComingSoonPage({ params }: any) {
               {/* Logo */}           
               <a href={SiteLinks.twitter}>
               <img
-                src={SiteImage.logoFlat}
+                src={SiteImage.logoFlatV3}
                 alt="Logo"
                 className="mb-3 h-52 md:h-72 aspect-auto hover:animate-pulse cursor-pointer"
               />
@@ -35,11 +35,11 @@ export default async function ComingSoonPage({ params }: any) {
 
           {/* Bottom Half */}
           <div className="flex-1 flex-col flex justify-start items-center">
-            <div className="mt-5" />
+            <div className="mt-10" />
             <p className={`text-xs md:text-sm text-center text-stone-200 ${spaceMono.className}`}>
               PREPARE FOR ARRIVAL
             </p>            
-            <p className={`mt-3 text-4xl md:text-5xl text-center text-stone-200 ${spaceGrotesk.className}`}>
+            <p className={`mt-3 text-4xl md:text-5xl text-center text-stone-200 ${mavenPro.className}`}>
               COMING APRIL 2024
             </p>
           </div>
