@@ -40,9 +40,11 @@ export default function FAQs() {
         FREQUENTLY ASKED QUESTIONS
       </h1>
 
-      {faqsList.map((faq) => (
-        <FAQItem {...faq} key={faq.q} />
-      ))}
+      <div className="mx-6">
+        {faqsList.map((faq) => (
+          <FAQItem {...faq} key={faq.q} />
+        ))}
+      </div>
     </div>
   );
 }
