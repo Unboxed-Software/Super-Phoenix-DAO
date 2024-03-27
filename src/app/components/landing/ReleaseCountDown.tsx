@@ -23,9 +23,7 @@ export default function ReleaseCountDown() {
       remainingHours: releaseDate.diff(date, "hours") % 24,
       remainingMinutes: releaseDate.diff(date, "minutes") % 60,
     };
-  }, []);
-
-  console.log(remaningDays, remainingHours, remainingMinutes);
+  }, [date]);
 
   return (
     <div className="container flex flex-row justify-center">
@@ -38,7 +36,7 @@ export default function ReleaseCountDown() {
         <p className="text-neutral-400">HRS</p>
       </div>
       <div className="p-4 w-20 bg-gray-850 border border-neutral-500 rounded-2xl text-center m-3">
-        <p className="text-white text-2xl">{remainingHours}</p>
+        <p className="text-white text-2xl">{remainingMinutes}</p>
         <p className="text-neutral-400">MIN</p>
       </div>
     </div>
