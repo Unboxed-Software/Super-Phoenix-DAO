@@ -12,7 +12,7 @@ export default function JoinMailingListForm() {
     <div className="mx-6 mb-20 flex flex-col rounded-2xl border border-neutral-500 bg-gray-750 p-10 md:w-2/4 lg:w-1/3">
       <h1 className="mb-2 text-center text-5xl text-white">PREPARE</h1>
       <h1 className="mb-2 text-center text-5xl text-white">FOR ARIVAL</h1>
-      <p className="mb-6 text-sm text-neutral-400">
+      <p className="mb-6 text-center text-sm text-neutral-400">
         This is where we drop a bunch of copy to talk about whatever is in this content section.
       </p>
 
