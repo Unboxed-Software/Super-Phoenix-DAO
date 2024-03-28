@@ -1,17 +1,17 @@
-import { mavenPro, spaceMono } from "@/app/models/fonts";
-import { SiteImage } from "@/app/models/images";
-import { SiteLinks as SiteLinks } from "@/app/models/links";
-import Image from "next/image";
-import FAQList from "@/app/components/landing/FAQList";
-import HeroSection from "@/app/components/landing/HeroSection";
-import Footer from "@/app/components/landing/Footer";
-import JoinMailingListForm from "@/app/components/landing/JoinMailingListForm";
-import ReleaseCountDown from "@/app/components/landing/ReleaseCountDown";
+import { mavenPro, spaceMono } from '@/app/models/fonts';
+import { SiteImage } from '@/app/models/images';
+import { SiteLinks as SiteLinks } from '@/app/models/links';
+import Image from 'next/image';
+import FAQList from '@/app/components/landing/FAQList';
+import HeroSection from '@/app/components/landing/HeroSection';
+import Footer from '@/app/components/landing/Footer';
+import JoinMailingListForm from '@/app/components/landing/JoinMailingListForm';
+import ReleaseCountDown from '@/app/components/landing/ReleaseCountDown';
 
 export default async function LandingPage() {
   return (
-    <div className="bg-gray-850 flex flex-col items-center">
-      <div className="relative w-full h-screen overflow-auto flex justify-center items-center">
+    <div className="flex flex-col items-center bg-gray-850">
+      <div className="relative flex h-screen w-full items-center justify-center overflow-auto">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -27,29 +27,25 @@ export default async function LandingPage() {
         <div className="absolute inset-0 flex flex-col">
           {/* Top Half */}
           <div className="flex-1">
-            <div className="w-full h-full flex-col flex justify-end items-center">
+            <div className="flex h-full w-full flex-col items-center justify-end">
               {/* Logo */}
               <a href={SiteLinks.twitter}>
                 <img
                   src={SiteImage.logoFlatV3}
                   alt="Logo"
-                  className="mb-3 h-52 md:h-72 aspect-auto hover:animate-pulse cursor-pointer"
+                  className="mb-3 aspect-auto h-52 cursor-pointer hover:animate-pulse md:h-72"
                 />
               </a>
             </div>
           </div>
 
           {/* Bottom Half */}
-          <div className="flex-1 flex-col flex justify-start items-center">
+          <div className="flex flex-1 flex-col items-center justify-start">
             <div className="mt-10" />
-            <p
-              className={`text-xs md:text-sm text-center text-stone-200 ${spaceMono.className}`}
-            >
+            <p className={`text-center text-xs text-stone-200 md:text-sm ${spaceMono.className}`}>
               PREPARE FOR ARRIVAL
             </p>
-            <p
-              className={`mt-3 mb-16 lg:w-1/2 text-4xl md:text-5xl text-center text-stone-200 ${mavenPro.className}`}
-            >
+            <p className={`mb-16 mt-3 text-center text-4xl text-stone-200 md:text-5xl lg:w-1/2 ${mavenPro.className}`}>
               BUILDING A COMMUNITY AROUND THE LARGEST WEB3 ASSET IN THE WORLD
             </p>
             <ReleaseCountDown />
@@ -86,12 +82,7 @@ export default async function LandingPage() {
       </div>
 
       <div className="container mb-72 flex justify-center align-middle">
-        <Image
-          src="https://fakeimg.pl/600x400"
-          width={580}
-          height={330}
-          alt="Avatar of Jonathan Reinink"
-        />
+        <Image src="https://fakeimg.pl/600x400" width={580} height={330} alt="Avatar of Jonathan Reinink" />
       </div>
 
       <FAQList />

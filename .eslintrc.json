@@ -8,7 +8,19 @@
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",
     "@typescript-eslint/no-shadow": ["warn"],
-    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
     "react/require-default-props": "off",
     "import/prefer-default-export": "off",
     "object-curly-newline": "off",
@@ -23,4 +35,3 @@
     }
   }
 }
-
