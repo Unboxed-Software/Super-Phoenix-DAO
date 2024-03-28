@@ -4,15 +4,13 @@ import { useEffect, useMemo, useState } from 'react';
 import dayjs from 'dayjs';
 
 export default function ReleaseCountDown() {
-  const releaseDate = dayjs('2024-04-30');
+  const releaseDate = dayjs(process.env.NEXT_PUBLIC_RELEASE_DATE);
   const [date, setDate] = useState(dayjs());
 
   useEffect(() => {
-    console.log('Setting Interval');
     const interval = setInterval(() => {
-      console.log('Updating Date');
       setDate(dayjs());
-    }, 60000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -23,7 +21,7 @@ export default function ReleaseCountDown() {
       remainingHours: releaseDate.diff(date, 'hours') % 24,
       remainingMinutes: releaseDate.diff(date, 'minutes') % 60,
     };
-  }, [date]);
+  }, [date, releaseDate]);
 
   return (
     <div className="container flex flex-row justify-center">
