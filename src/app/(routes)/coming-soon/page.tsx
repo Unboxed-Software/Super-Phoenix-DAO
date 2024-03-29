@@ -36,12 +36,8 @@ export default async function ComingSoonPage({ params: _params }: any) {
           {/* Bottom Half */}
           <div className="flex flex-1 flex-col items-center justify-start">
             <div className="mt-10" />
-            <p className={`text-center text-xs text-stone-200 md:text-sm ${spaceMono.className}`}>
-              PREPARE FOR ARRIVAL
-            </p>
-            <p className={`mt-3 text-center text-4xl text-stone-200 md:text-5xl ${mavenPro.className}`}>
-              COMING APRIL 2024
-            </p>
+            <p className="text-center text-xs text-stone-200 md:text-sm ">PREPARE FOR ARRIVAL</p>
+            <p className="mt-3 text-center text-4xl text-stone-200 md:text-5xl ">COMING APRIL 2024</p>
           </div>
         </div>
       </div>
