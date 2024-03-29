@@ -15,7 +15,7 @@ export default function FAQItem({ q, ans }: FAQ) {
       onClick={() => setIsOpen((prevState) => !prevState)}
     >
       <div className="flex w-full justify-between">
-        <p className="mb-0 text-xl font-bold text-white">{q}</p>
+        <p className="mb-0 text-xl font-medium text-stone-200">{q}</p>
         <SVGIcon iconPath="/assets/icons/plus.svg" alt="Expand" />
       </div>
       <div className="w-2/3">{isOpen && <p className="mt-2 text-start text-sm text-neutral-400">{ans}</p>}</div>

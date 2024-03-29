@@ -25,17 +25,17 @@ export default function ReleaseCountDown() {
 
   return (
     <div className="container flex flex-row justify-center">
-      <div className="m-3 w-20 rounded-2xl border border-neutral-500 bg-gray-850 p-4 text-center">
-        <p className="text-2xl text-white">{remaningDays}</p>
-        <p className="text-neutral-400">DAYS</p>
+      <div className="m-3 h-20 w-20 rounded-2xl border border-neutral-500 bg-gray-850 p-4 text-center">
+        <p className="text-xl text-white">{remaningDays}</p>
+        <p className="font-medium text-neutral-400">DAYS</p>
       </div>
-      <div className="m-3 w-20 rounded-2xl border border-neutral-500 bg-gray-850 p-4 text-center">
-        <p className="text-2xl text-white">{remainingHours}</p>
-        <p className="text-neutral-400">HRS</p>
+      <div className="m-3 h-20 w-20 rounded-2xl border border-neutral-500 bg-gray-850 p-4 text-center">
+        <p className="text-xl text-white">{remainingHours}</p>
+        <p className="font-medium text-neutral-400">HRS</p>
       </div>
-      <div className="m-3 w-20 rounded-2xl border border-neutral-500 bg-gray-850 p-4 text-center">
-        <p className="text-2xl text-white">{remainingMinutes}</p>
-        <p className="text-neutral-400">MIN</p>
+      <div className="m-3 h-20 w-20 rounded-2xl border border-neutral-500 bg-gray-850 p-4 text-center">
+        <p className="text-xl text-white">{remainingMinutes}</p>
+        <p className="font-medium text-neutral-400">MIN</p>
       </div>
     </div>
   );

@@ -21,19 +21,19 @@ export default async function LandingPage() {
         ></div>
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black opacity-60"></div>
+        <div className="absolute inset-0 bg-black opacity-30"></div>
 
         {/* Content */}
         <div className="absolute inset-0 flex flex-col">
           {/* Top Half */}
-          <div className="flex-1">
-            <div className="flex h-full w-full flex-col items-center justify-end">
-              {/* Logo */}
+          <div className=" mt-20 flex justify-center">
+            <div className="relative flex h-44 w-80 flex-col items-center justify-end">
               <a href={SiteLinks.twitter}>
-                <img
+                <Image
                   src={SiteImage.logoFlatV3}
                   alt="Logo"
                   className="mb-3 aspect-auto h-52 cursor-pointer hover:animate-pulse md:h-72"
+                  fill
                 />
               </a>
             </div>
@@ -50,7 +50,7 @@ export default async function LandingPage() {
           </div>
         </div>
       </div>
-      <div className="container mb-20">
+      <div className="container mb-52 mt-32">
         <HeroSection
           header="FIMBUL ECOS SUPERPHOENIX TITAN STARSHIP"
           description="The Superphoenix Titan ship is a groundbreaking digital asset within the Star Atlas Metaverse, offering a vast expanse of interior space to be transformed into a virtual paradise. This ship will feature an assortment of meticulously designed amenities that will provide a virtual social experience unlike any other. The Super Phoenix DAO will establish an unparalleled entertainment and leisure hub, catering to users seeking a rich and engaging experience in the virtual world."
@@ -60,7 +60,7 @@ export default async function LandingPage() {
           size="lg"
         />
       </div>
-      <div className="container mb-10">
+      <div className="container mb-5">
         <HeroSection
           header="THE SUPERPHOENIX"
           description="is an interstellar oasis that will push the bounds of space exploration within the Star Atlas Metaverse. Join the Super Phoenix DAO to ensure your place onboard as we build unique member experiences and explore Galia together as a community."
