@@ -1,4 +1,3 @@
-import { mavenPro, spaceMono } from '@/app/models/fonts';
 import { SiteImage } from '@/app/models/images';
 import { SiteLinks as SiteLinks } from '@/app/models/links';
 import Image from 'next/image';
