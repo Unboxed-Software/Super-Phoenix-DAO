@@ -13,7 +13,7 @@ export default function JoinMailingListForm() {
       <h1 className="mb-2 text-center text-5xl text-white">PREPARE</h1>
       <h1 className="mb-2 text-center text-5xl text-white">FOR ARIVAL</h1>
       <p className="mb-6 text-center text-sm text-neutral-400">
-        This is where we drop a bunch of copy to talk about whatever is in this content section.
+        Sign up to receive upcoming notifications from The Super Phoenix DAO
       </p>
 
       <form action={formAction}>
