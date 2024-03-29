@@ -1,0 +1,37 @@
+{
+  "extends": ["next", "plugin:@typescript-eslint/recommended", "prettier"],
+  "plugins": ["prettier", "@typescript-eslint"],
+  "rules": {
+    "prettier/prettier": "error",
+    "import/extensions": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/no-shadow": ["warn"],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "react/require-default-props": "off",
+    "import/prefer-default-export": "off",
+    "object-curly-newline": "off",
+    "curly": ["error", "multi-line"],
+    "eol-last": 1
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}

@@ -1,3 +1,3 @@
 export enum SiteLinks {
-    twitter = "https://twitter.com/SuperPhoenixDAO",
+  twitter = 'https://twitter.com/SuperPhoenixDAO',
 }

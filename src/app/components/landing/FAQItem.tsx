@@ -1,5 +1,5 @@
-import { useState } from "react";
-import SVGIcon from "../SVGIcon";
+import { useState } from 'react';
+import SVGIcon from '../SVGIcon';
 
 type FAQ = {
   q: string;
@@ -11,18 +11,14 @@ export default function FAQItem({ q, ans }: FAQ) {
 
   return (
     <button
-      className="w-full bg-gray-750 border border-neutral-500 rounded-2xl p-6 flex flex-col my-6"
+      className="my-6 flex w-full flex-col rounded-2xl border border-neutral-500 bg-gray-750 p-6"
       onClick={() => setIsOpen((prevState) => !prevState)}
     >
-      <div className="w-full flex justify-between">
-        <p className="text-white font-bold text-xl mb-0">{q}</p>
+      <div className="flex w-full justify-between">
+        <p className="mb-0 text-xl font-bold text-white">{q}</p>
         <SVGIcon iconPath="/assets/icons/plus.svg" alt="Expand" />
       </div>
-      <div className="w-2/3">
-        {isOpen && (
-          <p className="text-neutral-400 text-sm mt-2 text-start">{ans}</p>
-        )}
-      </div>
+      <div className="w-2/3">{isOpen && <p className="mt-2 text-start text-sm text-neutral-400">{ans}</p>}</div>
     </button>
   );
 }
