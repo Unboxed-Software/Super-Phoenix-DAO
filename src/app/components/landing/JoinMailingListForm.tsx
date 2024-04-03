@@ -4,7 +4,7 @@ import { SiteImage } from '@/app/models/images';
 import SVGIcon from '../SVGIcon';
 import { useFormState } from 'react-dom';
 import { addEmailToMailingList } from '@/app/(routes)/landing/actions';
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function JoinMailingListForm() {
   const [state, formAction] = useFormState(addEmailToMailingList, { message: '' });
