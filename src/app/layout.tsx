@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { spaceGrotesk } from './models/fonts';
+import { semplicita } from './models/fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -13,8 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={spaceGrotesk.className}>{children}</body>
+    <html lang="en" className={`${semplicita.variable} font-semplicita font-light`}>
+      <body>{children}</body>
     </html>
   );
 }

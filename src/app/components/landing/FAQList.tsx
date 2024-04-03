@@ -36,7 +36,7 @@ const faqsList = [
 export default function FAQs() {
   return (
     <div className="container">
-      <h1 className="mb-16 text-center text-5xl text-white">FREQUENTLY ASKED QUESTIONS</h1>
+      <h1 className="mb-16 text-center text-3xl text-[2.7rem] text-white">FREQUENTLY ASKED QUESTIONS</h1>
 
       <div className="mx-6">
         {faqsList.map((faq) => (
