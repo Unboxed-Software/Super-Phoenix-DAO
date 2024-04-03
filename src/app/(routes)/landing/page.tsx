@@ -6,7 +6,6 @@ import HeroSection from '@/app/components/landing/HeroSection';
 import Footer from '@/app/components/landing/Footer';
 import JoinMailingListForm from '@/app/components/landing/JoinMailingListForm';
 import ReleaseCountDown from '@/app/components/landing/ReleaseCountDown';
-import { YoutubeVideo } from '@/app/components/YoutubeVideo';
 import LaunchVideo from '@/app/components/landing/LaunchVideo';
 
 export default async function LandingPage() {
