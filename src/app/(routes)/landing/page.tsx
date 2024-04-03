@@ -6,6 +6,7 @@ import HeroSection from '@/app/components/landing/HeroSection';
 import Footer from '@/app/components/landing/Footer';
 import JoinMailingListForm from '@/app/components/landing/JoinMailingListForm';
 import ReleaseCountDown from '@/app/components/landing/ReleaseCountDown';
+import LaunchVideo from '@/app/components/landing/LaunchVideo';
 
 export default async function LandingPage() {
   return (
@@ -41,8 +42,8 @@ export default async function LandingPage() {
           {/* Bottom Half */}
           <div className="flex flex-1 flex-col items-center justify-start">
             <div className="mt-10" />
-            <p className="text-md text-center font-semibold text-stone-200 md:text-sm ">PREPARE FOR ARRIVAL</p>
-            <p className="mb-16 mt-3 text-center font-semplicita text-4xl font-light text-stone-200 md:text-5xl lg:w-3/4 ">
+            {/* <p className="text-md text-center font-semibold text-stone-200 md:text-sm ">PREPARE FOR ARRIVAL</p> */}
+            <p className="mb-16 mt-16 text-center font-semplicita text-4xl font-light text-stone-200 md:text-5xl lg:w-3/4 ">
               BUILDING A COMMUNITY AROUND THE LARGEST WEB3 ASSET IN THE WORLD
             </p>
             <ReleaseCountDown />
@@ -78,11 +79,13 @@ export default async function LandingPage() {
         />
       </div>
 
-      <div className="container mb-72 flex justify-center align-middle">
-        <Image src="https://fakeimg.pl/600x400" width={580} height={330} alt="Avatar of Jonathan Reinink" />
-      </div>
+      <div className="mb-32" />
+
+      <LaunchVideo />
 
       <FAQList />
+
+      <div className="mb-32" />
 
       <JoinMailingListForm />
 
