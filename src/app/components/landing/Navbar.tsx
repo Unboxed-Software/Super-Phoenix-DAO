@@ -107,6 +107,10 @@ function Navbar() {
             <a href="#" className="text-gray-400" onClick={handleLinkClick}>
               DAO
             </a>
+            <div className="mt-5" />
+            <a href={SiteLinks.twitter} className="mx-2 inline-block">
+              <SVGIcon iconPath={SiteImage.twitterIcon} alt="Twitter" size="sm" />
+            </a>
           </div>
         </div>
       </div>
