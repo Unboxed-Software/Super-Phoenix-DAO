@@ -47,6 +47,12 @@ export default async function LandingPage() {
               BUILDING A COMMUNITY AROUND THE LARGEST WEB3 ASSET IN THE WORLD
             </p>
             <ReleaseCountDown />
+            <a
+              className="mt-8 appearance-none rounded-md border border-neutral-500 bg-gray-850 p-3 font-medium leading-tight text-neutral-300 hover:bg-gray-750 active:bg-gray-900"
+              href="#mailing-list"
+            >
+              Stay Notified
+            </a>
           </div>
         </div>
       </div>
@@ -69,12 +75,21 @@ export default async function LandingPage() {
           imageAlt="THE SUPERPHOENIX"
         />
       </div>
-      <div className="container mb-20">
+      <div className="container mb-5">
         <HeroSection
           header="OUR MISSION"
           description="is to unify players across factions to create a community that brings guilds together to benefit from all the DAO has to offer. The Super Phoenix DAO will provide token holders with the ability to participate in the decision making and governance of the Superphoenix Titan Ship in a truly distributed and democratized way."
           imagePath="/assets/img3.jpg"
           imageLocation="left"
+          imageAlt="OUR MISSION"
+        />
+      </div>
+      <div className="container mb-20">
+        <HeroSection
+          header="Core Data Cube NFT’s"
+          description="The Super Phoenix Data Cube Limited NFT Collection will provide an opportunity to take part in the creation of a powerful community within the Star Atlas ecosystem. The Data Cube NFT’s will not only provide a path to shared ownership of the largest starship in Galia, but also provide a host of other rewards, benefits, and exclusive player access to the Superphoenix Titan Ship itself"
+          imagePath="/assets/img4.jpg"
+          imageLocation="right"
           imageAlt="OUR MISSION"
         />
       </div>

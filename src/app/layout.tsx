@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${semplicita.variable} font-semplicita font-light`}>
+    <html lang="en" className={`${semplicita.variable} scroll-smooth font-semplicita font-light`}>
       <body>{children}</body>
     </html>
   );
