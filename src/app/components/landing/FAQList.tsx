@@ -9,19 +9,23 @@ const faqsList = [
   },
   {
     q: 'What is the Data Cube NFT?',
-    ans: 'The data cube NFT is an exclusive membership asset that entitles the holder to lifetime access to the amenities of the Superphoenix Titan Ship. The NFT offering will have 3 rarity tiers which offer increasing levels of rewards and future access within the Superphoenix Titan Ship.',
+    ans: 'The data cube NFT is an exclusive membership asset that entitles the holder to lifetime access to the amenities of the Superphoenix Titan Ship. The NFT offering will have 6 rarity tiers which offer increasing levels of rewards and future access within the Superphoenix Titan Ship.',
+  },
+  {
+    q: 'How do I buy Data Cube NFT’s?',
+    ans: 'Data Cube NFT’s will be available for sale directly on the Super Phoenix DAO website at a fixed price of 1.5 Sol each and can be purchased with Sol or Atlas tokens.',
   },
   {
     q: 'Who will manage and operate the Superphoenix Titan ship?',
-    ans: 'The Superphoenix Titan ship will be deployed to SAGE/ Starbased using the player profile system to securely manage operations in partnership with affiliated guilds until DAO governance is established.',
+    ans: 'The Superphoenix Titan ship will be deployed to Starbased using the player profile system to securely manage operations in partnership with affiliated guilds until DAO governance is established.',
   },
   {
     q: 'What will DAO revenue funds be used for?',
-    ans: 'Funds will accrue to the DAO treasury from the initial DAO token sale with a portion earmarked to establish a DEX market listing. Once community governance is established, all DAO funds and assets will be available to the community to use as it sees fit',
+    ans: 'Funds will accrue to the DAO treasury from the initial DAO token sale with a portion earmarked to establish a DEX market listing. Once community governance is established, all DAO funds and assets will be available to the community to use as it sees fit.',
   },
   {
     q: 'When will the EMBER token be available?',
-    ans: 'The DAO token launch of EMBER will be announced in advance and published on the DAO website. The token sale is planned for launch in Q3 2024',
+    ans: 'The DAO token launch of EMBER will be announced in advance, and published on the DAO website. The token sale is planned for launch in Q3 2024.',
   },
   {
     q: 'How do I buy EMBER tokens?',
