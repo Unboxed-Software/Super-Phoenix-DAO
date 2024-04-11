@@ -1,6 +1,6 @@
-import { SiteLinks } from '@/app/models/links';
-import SVGIcon from '../SVGIcon';
-import { SiteImage } from '@/app/models/images';
+// import { SiteLinks } from '@/app/models/links';
+// import SVGIcon from '../SVGIcon';
+// import { SiteImage } from '@/app/models/images';
 
 export default function Footer() {
   return (

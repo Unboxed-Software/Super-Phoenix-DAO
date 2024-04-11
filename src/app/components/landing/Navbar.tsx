@@ -42,10 +42,10 @@ function Navbar() {
           DAO
           <span className="tooltiptext">Coming Soon</span>
         </a>
-        <div className='ml-5'/>
+        <div className="ml-5" />
         <a href={SiteLinks.twitter} className="mx-2 inline-block">
-            <SVGIcon iconPath={SiteImage.twitterIcon} alt="Twitter" size="sm" />
-          </a>
+          <SVGIcon iconPath={SiteImage.twitterIcon} alt="Twitter" size="sm" />
+        </a>
       </div>
     );
   };

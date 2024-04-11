@@ -20,7 +20,7 @@ export default function HeroSection({ header, description, imagePath, imageLocat
         </div>
         <div className="mx-0 my-5 flex flex-col  justify-center lg:mx-10 lg:my-10">
           <h1 className={`mb-2 text-white ${size === 'md' ? 'text-2xl' : 'text-4xl'}`}>{header}</h1>
-          <p className="text-neutral-400 text-lg">{description}</p>
+          <p className="text-lg text-neutral-400">{description}</p>
         </div>
       </div>
     </div>
