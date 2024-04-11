@@ -47,6 +47,12 @@ export default async function LandingPage() {
               BUILDING A COMMUNITY AROUND THE LARGEST WEB3 ASSET IN THE WORLD
             </p>
             <ReleaseCountDown />
+            <a
+              className="mt-8 appearance-none rounded-md border border-neutral-500 bg-gray-850 p-3 font-medium leading-tight text-neutral-300 hover:bg-gray-750 active:bg-gray-900"
+              href="#mailing-list"
+            >
+              Stay Notified
+            </a>
           </div>
         </div>
       </div>

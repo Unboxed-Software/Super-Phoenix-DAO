@@ -38,6 +38,7 @@ export default function JoinMailingListForm() {
             className="mb-5 w-full appearance-none rounded-xl border border-neutral-500 bg-gray-850 p-4 leading-tight text-neutral-300"
             type="text"
             name="mail"
+            id="mailing-list"
           />
           <button
             type="submit"
