@@ -12,7 +12,6 @@ import Header from '@/app/components/landing/Header';
 export default async function LandingPage() {
   return (
     <div className="flex flex-col items-center bg-gray-850">
-
       <Header />
 
       <div className="relative flex h-screen w-full items-center justify-center overflow-auto">

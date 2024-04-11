@@ -1,4 +1,4 @@
-import { SiteLinks } from "@/app/models/links";
+import { SiteLinks } from '@/app/models/links';
 
 const Header = () => {
   return (
@@ -12,19 +12,19 @@ const Header = () => {
                 Whitepaper
               </a>
 
-              <a href="#" className="cursor-default text-gray-400 tooltip">
+              <a href="#" className="tooltip cursor-default text-gray-400">
                 NFT
                 <span className="tooltiptext">Coming Soon</span>
               </a>
-              <a href="#" className="cursor-default text-gray-400 tooltip">
+              <a href="#" className="tooltip cursor-default text-gray-400">
                 Roadmap
                 <span className="tooltiptext">Coming Soon</span>
               </a>
-              <a href="#" className="cursor-default text-gray-400 tooltip">
+              <a href="#" className="tooltip cursor-default text-gray-400">
                 Team
                 <span className="tooltiptext">Coming Soon</span>
               </a>
-              <a href="#" className="cursor-default text-gray-400 tooltip">
+              <a href="#" className="tooltip cursor-default text-gray-400">
                 DAO
                 <span className="tooltiptext">Coming Soon</span>
               </a>
