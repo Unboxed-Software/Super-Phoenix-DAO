@@ -7,9 +7,10 @@ export function YoutubeVideo(props: YoutubeVideoProps) {
   const { src, height } = props;
 
   return (
-    <div className="aspect-h-9 aspect-w-16">
+    <div className="aspect-h-9 aspect-w-16 mx-3">
       <iframe
         className="rounded-lg"
+        style={{ maxWidth: '100%' }}
         src={src}
         frameBorder="0"
         height={height}

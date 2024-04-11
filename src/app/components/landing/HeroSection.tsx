@@ -15,7 +15,7 @@ export default function HeroSection({ header, description, imagePath, imageLocat
       <div
         className={`flex w-full flex-col justify-evenly align-middle ${imageLocation === 'right' ? 'lg:flex-row-reverse lg:text-end' : 'lg:flex-row'}`}
       >
-        <div className="relative aspect-video h-[300px] w-[500px]">
+        <div className="w-100 relative  aspect-video lg:h-[300px] lg:w-[500px]">
           <Image src={imagePath} fill alt={imageAlt} />
         </div>
         <div className="mx-0 my-5 flex flex-col  justify-center lg:mx-10 lg:my-10">
