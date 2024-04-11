@@ -1,5 +1,6 @@
 import { SiteLinks } from '@/app/models/links';
 import SVGIcon from '../SVGIcon';
+import { SiteImage } from '@/app/models/images';
 
 export default function Footer() {
   return (
@@ -23,9 +24,9 @@ export default function Footer() {
           </a> */}
         </div>
         <div className="me-3 flex flex-row justify-center align-middle">
-          <a href={SiteLinks.twitter} className="mx-2 inline-block">
-            <SVGIcon iconPath="/assets/icons/twitter.svg" alt="Twitter" size="sm" />
-          </a>
+          {/* <a href={SiteLinks.twitter} className="mx-2 inline-block">
+            <SVGIcon iconPath={SiteImage.twitterIcon} alt="Twitter" size="sm" />
+          </a> */}
           {/* TODO: fix the social media links */}
           {/* <a href={SiteLinks.twitter} className="mx-2 inline-block">
             <SVGIcon iconPath="/assets/icons/instagram.svg" alt="facebook" size="sm" />

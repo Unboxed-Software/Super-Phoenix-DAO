@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SVGIcon from '../SVGIcon';
+import { SiteImage } from '@/app/models/images';
 
 type FAQ = {
   q: string;
@@ -16,9 +17,9 @@ export default function FAQItem({ q, ans }: FAQ) {
     >
       <div className="flex w-full justify-between">
         <p className="mb-0 text-xl font-medium text-stone-200">{q}</p>
-        <SVGIcon iconPath="/assets/icons/plus.svg" alt="Expand" />
+        <SVGIcon iconPath={isOpen ? SiteImage.minusIcon : SiteImage.plusIcon} alt="Expand" />
       </div>
-      <div className="w-2/3">{isOpen && <p className="mt-2 text-start text-sm text-neutral-400">{ans}</p>}</div>
+      <div className="w-2/3">{isOpen && <p className="mt-2 text-start text-lg text-neutral-400">{ans}</p>}</div>
     </button>
   );
 }

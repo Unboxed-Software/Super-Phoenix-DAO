@@ -1,8 +1,10 @@
 'use client';
 import { SiteLinks } from '@/app/models/links';
 import { useState } from 'react';
+import SVGIcon from '../SVGIcon';
+import { SiteImage } from '@/app/models/images';
 
-function Header() {
+function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -40,6 +42,10 @@ function Header() {
           DAO
           <span className="tooltiptext">Coming Soon</span>
         </a>
+        <div className='ml-5'/>
+        <a href={SiteLinks.twitter} className="mx-2 inline-block">
+            <SVGIcon iconPath={SiteImage.twitterIcon} alt="Twitter" size="sm" />
+          </a>
       </div>
     );
   };
@@ -123,4 +129,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Navbar;

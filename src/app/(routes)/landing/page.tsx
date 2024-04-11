@@ -7,12 +7,12 @@ import Footer from '@/app/components/landing/Footer';
 import JoinMailingListForm from '@/app/components/landing/JoinMailingListForm';
 import ReleaseCountDown from '@/app/components/landing/ReleaseCountDown';
 import LaunchVideo from '@/app/components/landing/LaunchVideo';
-import Header from '@/app/components/landing/Header';
+import Navbar from '@/app/components/landing/Navbar';
 
 export default async function LandingPage() {
   return (
     <div className="flex flex-col items-center bg-gray-850">
-      <Header />
+      <Navbar />
 
       <div className="relative flex h-screen w-full items-center justify-center overflow-auto">
         {/* Background Image */}

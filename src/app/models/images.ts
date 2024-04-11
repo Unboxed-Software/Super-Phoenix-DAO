@@ -6,4 +6,7 @@ export enum SiteImage {
   logoSm = 'https://shdw-drive.genesysgo.net/BamXrN29Jkq9HA3UyLZWEaikDa3zcVgnP6nakvrZdQ72/super-phoenix-logo-sm.png',
   logoFlat = 'https://shdw-drive.genesysgo.net/BamXrN29Jkq9HA3UyLZWEaikDa3zcVgnP6nakvrZdQ72/super-phoenix-flat.png',
   icon = 'https://shdw-drive.genesysgo.net/BamXrN29Jkq9HA3UyLZWEaikDa3zcVgnP6nakvrZdQ72/super-phoenix-ico.png',
+  minusIcon = '/assets/icons/minus.svg',
+  plusIcon = '/assets/icons/plus.svg',
+  twitterIcon = '/assets/icons/twitter.svg',
 }
