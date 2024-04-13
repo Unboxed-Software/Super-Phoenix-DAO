@@ -7,7 +7,7 @@ export default function LaunchVideo() {
       <h1 className="mb-16 text-center text-3xl text-[2.7rem] text-white">TEASER</h1>
 
       <div className="container mb-72 flex justify-center align-middle">
-        <YoutubeVideo src={SiteLinks.launchVideo} height={400} />
+        <YoutubeVideo src={SiteLinks.launchVideoV2} height={400} />
       </div>
     </div>
   );

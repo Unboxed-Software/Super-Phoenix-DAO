@@ -22,7 +22,7 @@ function Navbar() {
   const renderDesktopMenu = () => {
     return (
       <div className="hidden items-center space-x-4 text-lg md:flex">
-        <a href={SiteLinks.whitepaper} className=" hover:text-gray-400">
+        <a href={SiteLinks.whitepaperV2} className=" hover:text-gray-400">
           Whitepaper
         </a>
 
@@ -44,7 +44,10 @@ function Navbar() {
         </a>
         <div className="ml-5" />
         <a href={SiteLinks.twitter} className="mx-2 inline-block">
-          <SVGIcon iconPath={SiteImage.twitterIcon} alt="Twitter" size="sm" />
+          <SVGIcon iconPath={SiteImage.twitterIcon} alt="Twitter" size="md" />
+        </a>
+        <a href={SiteLinks.discord} className="mx-2 inline-block text-white">
+              <SVGIcon iconPath={SiteImage.discordIcon} alt="Discord" size="md" />
         </a>
       </div>
     );
@@ -92,7 +95,7 @@ function Navbar() {
           </div>
 
           <div className="flex flex-col items-center space-y-4">
-            <a href={SiteLinks.whitepaper} className="hover:text-gray-400">
+            <a href={SiteLinks.whitepaperV2} className="hover:text-gray-400">
               Whitepaper
             </a>
             <a href="#" className="text-gray-400" onClick={handleLinkClick}>
@@ -109,7 +112,10 @@ function Navbar() {
             </a>
             <div className="mt-5" />
             <a href={SiteLinks.twitter} className="mx-2 inline-block">
-              <SVGIcon iconPath={SiteImage.twitterIcon} alt="Twitter" size="sm" />
+              <SVGIcon iconPath={SiteImage.twitterIcon} alt="Twitter" size="md" />
+            </a>
+            <a href={SiteLinks.discord} className="mx-2 inline-block text-white">
+              <SVGIcon iconPath={SiteImage.discordIcon} alt="Discord" size="md" />
             </a>
           </div>
         </div>

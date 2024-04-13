@@ -9,4 +9,5 @@ export enum SiteImage {
   minusIcon = '/assets/icons/minus.svg',
   plusIcon = '/assets/icons/plus.svg',
   twitterIcon = '/assets/icons/twitter.svg',
+  discordIcon = '/assets/icons/discord.svg',
 }
