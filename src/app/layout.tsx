@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import { spaceGrotesk } from "./models/fonts";
-import "./globals.css";
- 
+import type { Metadata } from 'next';
+import { semplicita } from './models/fonts';
+import './globals.css';
+
 export const metadata: Metadata = {
-  title: "Super Phoenix DAO",
-  description: "PREPARE FOR ARRIVAL",
+  title: 'Super Phoenix DAO',
+  description: 'PREPARE FOR ARRIVAL',
 };
 
 export default function RootLayout({
@@ -13,8 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={spaceGrotesk.className}>{children}</body>
+    <html lang="en" className={`${semplicita.variable} scroll-smooth font-semplicita font-light`}>
+      <body>{children}</body>
     </html>
   );
 }
