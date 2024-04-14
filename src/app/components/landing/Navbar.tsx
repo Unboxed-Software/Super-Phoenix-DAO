@@ -47,7 +47,7 @@ function Navbar() {
           <SVGIcon iconPath={SiteImage.twitterIcon} alt="Twitter" size="md" />
         </a>
         <a href={SiteLinks.discord} className="mx-2 inline-block text-white">
-              <SVGIcon iconPath={SiteImage.discordIcon} alt="Discord" size="md" />
+          <SVGIcon iconPath={SiteImage.discordIcon} alt="Discord" size="md" />
         </a>
       </div>
     );
