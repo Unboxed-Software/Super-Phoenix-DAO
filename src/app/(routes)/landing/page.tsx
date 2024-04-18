@@ -8,6 +8,7 @@ import JoinMailingListForm from '@/app/components/landing/JoinMailingListForm';
 import ReleaseCountDown from '@/app/components/landing/ReleaseCountDown';
 import LaunchVideo from '@/app/components/landing/LaunchVideo';
 import Navbar from '@/app/components/landing/Navbar';
+import MintButton from '@/app/components/mintButton';
 
 export default async function LandingPage() {
   return (
@@ -56,6 +57,7 @@ export default async function LandingPage() {
             >
               Stay Notified
             </a>
+            <MintButton />
           </div>
         </div>
       </div>
