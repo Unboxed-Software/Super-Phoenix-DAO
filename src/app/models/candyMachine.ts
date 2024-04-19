@@ -9,7 +9,7 @@ if (!CM_ID) {
   throw new Error('Please provide the NEXT_PUBLIC_CM_ID env var');
 }
 
-const MINTING_PAYMENT_METHOD = {
+export const MINTING_PAYMENT_METHOD = {
   SOL: 'SOL',
   TOKEN: 'TOKEN',
 } as const;

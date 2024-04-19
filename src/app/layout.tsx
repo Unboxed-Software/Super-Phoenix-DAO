@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { semplicita } from './models/fonts';
 import './globals.css';
-import Providers from './components/Providers';
-import Navbar from './components/Navbar';
 
 export const metadata: Metadata = {
   title: 'Super Phoenix DAO',

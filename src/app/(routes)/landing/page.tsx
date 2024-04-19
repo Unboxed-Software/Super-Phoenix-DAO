@@ -5,10 +5,7 @@ import FAQList from '@/app/components/landing/FAQList';
 import HeroSection from '@/app/components/landing/HeroSection';
 import Footer from '@/app/components/landing/Footer';
 import JoinMailingListForm from '@/app/components/landing/JoinMailingListForm';
-import ReleaseCountDown from '@/app/components/landing/ReleaseCountDown';
 import LaunchVideo from '@/app/components/landing/LaunchVideo';
-import Navbar from '@/app/components/landing/Navbar';
-import MintButton from '@/app/components/mintButton';
 
 export default async function LandingPage() {
   return (
@@ -48,14 +45,12 @@ export default async function LandingPage() {
             <p className="mx-3 mb-16 mt-16 text-center font-semplicita text-4xl font-light text-stone-200 md:text-5xl lg:w-3/4 ">
               BUILDING A COMMUNITY AROUND THE LARGEST WEB3 ASSET IN THE WORLD
             </p>
-            <ReleaseCountDown />
             <a
               className="mt-8 appearance-none rounded-md border border-neutral-500 bg-gold-500 p-3 font-medium leading-tight text-neutral-300 hover:bg-gold-800 active:bg-gold-800"
-              href="#mailing-list"
+              href="/mint"
             >
-              Stay Notified
+              Start Minting
             </a>
-            <MintButton />
           </div>
         </div>
       </div>
