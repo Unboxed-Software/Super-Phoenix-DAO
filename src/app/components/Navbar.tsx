@@ -1,11 +1,11 @@
 'use client';
 import { SiteLinks } from '@/app/models/links';
-import { useState } from 'react';
-import SVGIcon from '../SVGIcon';
+import React, { useState } from 'react';
+import SVGIcon from './SVGIcon';
 import { SiteImage } from '@/app/models/images';
-import ConnectWalletButton from '../wallet/ConnectWalletButton';
+import ConnectWalletButton from './wallet/ConnectWalletButton';
 
-function Navbar() {
+function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButton?: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -50,7 +50,7 @@ function Navbar() {
         <a href={SiteLinks.discord} className="mx-2 inline-block text-white">
           <SVGIcon iconPath={SiteImage.discordIcon} alt="Discord" size="md" />
         </a>
-        <ConnectWalletButton />
+        {isWithConnectWalletButton && <ConnectWalletButton />}
       </div>
     );
   };

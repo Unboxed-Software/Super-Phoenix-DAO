@@ -13,8 +13,6 @@ import MintButton from '@/app/components/mintButton';
 export default async function LandingPage() {
   return (
     <div className="flex flex-col items-center bg-gray-850">
-      <Navbar />
-
       <div className="relative flex h-screen w-full items-center justify-center overflow-auto">
         {/* Background Image */}
         <div
