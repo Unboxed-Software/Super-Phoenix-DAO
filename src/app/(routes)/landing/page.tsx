@@ -5,7 +5,7 @@ import FAQList from '@/app/components/landing/FAQList';
 import HeroSection from '@/app/components/landing/HeroSection';
 import Footer from '@/app/components/landing/Footer';
 import JoinMailingListForm from '@/app/components/landing/JoinMailingListForm';
-import ReleaseCountDown from '@/app/components/landing/ReleaseCountDown';
+// import ReleaseCountDown from '@/app/components/landing/ReleaseCountDown';
 import LaunchVideo from '@/app/components/landing/LaunchVideo';
 import Navbar from '@/app/components/landing/Navbar';
 
