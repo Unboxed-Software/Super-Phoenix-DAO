@@ -6,6 +6,7 @@ import HeroSection from '@/app/components/landing/HeroSection';
 import Footer from '@/app/components/landing/Footer';
 import JoinMailingListForm from '@/app/components/landing/JoinMailingListForm';
 import LaunchVideo from '@/app/components/landing/LaunchVideo';
+import CarouselSection from '@/app/components/landing/CarouselSection';
 
 export default async function LandingPage() {
   return (
@@ -54,7 +55,7 @@ export default async function LandingPage() {
           </div>
         </div>
       </div>
-      <div className="container mb-52 mt-32">
+      <div className="container mb-32 mt-32">
         <HeroSection
           header="FIMBUL ECOS SUPERPHOENIX TITAN STARSHIP"
           description="The Superphoenix Titan ship is a groundbreaking digital asset within the Star Atlas Metaverse, offering a vast expanse of interior space to be transformed into a virtual paradise. This ship will feature an assortment of meticulously designed amenities that will provide a virtual social experience unlike any other. The Super Phoenix DAO will establish an unparalleled entertainment and leisure hub, catering to users seeking a rich and engaging experience in the virtual world."
@@ -63,6 +64,10 @@ export default async function LandingPage() {
           imageAlt="FIMBUL ECOS SUPERPHOENIX TITAN STARSHIP"
           size="lg"
         />
+      </div>
+
+      <div className="container mb-32">
+        <CarouselSection />
       </div>
       <div className="container mb-5">
         <HeroSection
