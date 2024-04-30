@@ -28,7 +28,7 @@ TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 const Tooltip = ({
   children,
   content,
-  isDisabled = true,
+  isDisabled = false,
   ...props
 }: React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content> & {
   children: React.ReactNode;

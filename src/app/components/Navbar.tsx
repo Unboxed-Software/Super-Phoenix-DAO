@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import SVGIcon from './SVGIcon';
 import { SiteImage } from '@/app/models/images';
 import ConnectWalletButton from './wallet/ConnectWalletButton';
+import { Tooltip, TooltipProvider } from '@/components/ui/tooltip';
 
 function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButton?: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,22 +28,26 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
           Whitepaper
         </a>
 
-        <a href="#" className="tooltip cursor-default text-gray-400">
-          NFT
-          <span className="tooltiptext">Coming Soon</span>
-        </a>
-        <a href="#" className="tooltip cursor-default text-gray-400">
-          Roadmap
-          <span className="tooltiptext">Coming Soon</span>
-        </a>
-        <a href="#" className="tooltip cursor-default text-gray-400">
-          Team
-          <span className="tooltiptext">Coming Soon</span>
-        </a>
-        <a href="#" className="tooltip cursor-default text-gray-400">
-          DAO
-          <span className="tooltiptext">Coming Soon</span>
-        </a>
+        <Tooltip content="Coming Soon">
+          <a href="#" className="tooltip cursor-default text-gray-400">
+            NFT
+          </a>
+        </Tooltip>
+        <Tooltip content="Coming Soon">
+          <a href="#" className="tooltip cursor-default text-gray-400">
+            Roadmap
+          </a>
+        </Tooltip>
+        <Tooltip content="Coming Soon">
+          <a href="#" className="tooltip cursor-default text-gray-400">
+            Team
+          </a>
+        </Tooltip>
+        <Tooltip content="Coming Soon">
+          <a href="#" className="tooltip cursor-default text-gray-400">
+            DAO
+          </a>
+        </Tooltip>
         <div className="ml-5" />
         <a href={SiteLinks.twitter} className="mx-2 inline-block">
           <SVGIcon iconPath={SiteImage.twitterIcon} alt="Twitter" size="md" />
@@ -126,7 +131,7 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
   };
 
   return (
-    <>
+    <TooltipProvider>
       <header className="fixed top-0 z-10 w-full">
         <nav className="container mx-auto px-6 py-3">
           <div className="flex items-center justify-between">
@@ -137,7 +142,7 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
           {renderMobileMenu()}
         </nav>
       </header>
-    </>
+    </TooltipProvider>
   );
 }
 
