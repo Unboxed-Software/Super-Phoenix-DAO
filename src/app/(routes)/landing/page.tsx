@@ -48,9 +48,9 @@ export default async function LandingPage() {
             </p>
             <a
               className="mt-8 appearance-none rounded-md border border-neutral-500 bg-gold-500 p-3 font-medium leading-tight text-neutral-300 hover:bg-gold-800 active:bg-gold-800"
-              href="/mint"
+              href="#mailing-list"
             >
-              Start Minting
+              Stay Notified
             </a>
           </div>
         </div>
