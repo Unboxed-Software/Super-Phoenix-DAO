@@ -1,7 +1,7 @@
+import MintButtonsWrapper from '@/app/components/mintButtonsWrapper';
 import { SiteImage } from '@/app/models/images';
 import { SiteLinks as SiteLinks } from '@/app/models/links';
 import Image from 'next/image';
-import MintButtons from '@/app/components/mintButtons';
 
 export default async function MintPage() {
   return (
@@ -41,7 +41,7 @@ export default async function MintPage() {
             <p className="mx-3 mb-16 mt-16 text-center font-semplicita text-4xl font-light text-stone-200 md:text-5xl lg:w-3/4 ">
               BUILDING A COMMUNITY AROUND THE LARGEST WEB3 ASSET IN THE WORLD
             </p>
-            <MintButtons />
+            <MintButtonsWrapper />
           </div>
         </div>
       </div>
