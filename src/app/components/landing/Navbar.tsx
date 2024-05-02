@@ -25,10 +25,8 @@ function Navbar() {
         <a href={SiteLinks.whitepaperV2} className=" hover:text-gray-400">
           Whitepaper
         </a>
-
-        <a href="#" className="tooltip cursor-default text-gray-400">
+        <a href={SiteLinks.nfts} className="hover:text-gray-400">
           NFT
-          <span className="tooltiptext">Coming Soon</span>
         </a>
         <a href="#" className="tooltip cursor-default text-gray-400">
           Roadmap
@@ -98,7 +96,7 @@ function Navbar() {
             <a href={SiteLinks.whitepaperV2} className="hover:text-gray-400">
               Whitepaper
             </a>
-            <a href="#" className="text-gray-400" onClick={handleLinkClick}>
+            <a href={SiteLinks.nfts} className="hover:text-gray-400">
               NFT
             </a>
             <a href="#" className="text-gray-400" onClick={handleLinkClick}>
