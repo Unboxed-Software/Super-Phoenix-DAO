@@ -59,7 +59,7 @@ export default async function LandingPage() {
         <HeroSection
           header="FIMBUL ECOS SUPERPHOENIX TITAN STARSHIP"
           description="The Superphoenix Titan ship is a groundbreaking digital asset within the Star Atlas Metaverse, offering a vast expanse of interior space to be transformed into a virtual paradise. This ship will feature an assortment of meticulously designed amenities that will provide a virtual social experience unlike any other. The Super Phoenix DAO will establish an unparalleled entertainment and leisure hub, catering to users seeking a rich and engaging experience in the virtual world."
-          imagePath="/assets/img1.jpg"
+          imagePath="/assets/artworks/img1.jpg"
           imageLocation="left"
           imageAlt="FIMBUL ECOS SUPERPHOENIX TITAN STARSHIP"
           size="lg"
@@ -73,7 +73,7 @@ export default async function LandingPage() {
         <HeroSection
           header="THE SUPERPHOENIX"
           description="is an interstellar oasis that will push the bounds of space exploration within the Star Atlas Metaverse. Join the Super Phoenix DAO to ensure your place onboard as we build unique member experiences and explore Galia together as a community."
-          imagePath="/assets/img2.jpg"
+          imagePath="/assets/artworks/img2.jpg"
           imageLocation="right"
           imageAlt="THE SUPERPHOENIX"
         />
@@ -82,7 +82,7 @@ export default async function LandingPage() {
         <HeroSection
           header="OUR MISSION"
           description="is to unify players across factions to create a community that brings guilds together to benefit from all the DAO has to offer. The Super Phoenix DAO will provide token holders with the ability to participate in the decision making and governance of the Superphoenix Titan Ship in a truly distributed and democratized way."
-          imagePath="/assets/img3.jpg"
+          imagePath="/assets/artworks/img3.jpg"
           imageLocation="left"
           imageAlt="OUR MISSION"
         />
@@ -91,7 +91,7 @@ export default async function LandingPage() {
         <HeroSection
           header="Core Data Cube NFT’s"
           description="The Super Phoenix Data Cube Limited NFT Collection will provide an opportunity to take part in the creation of a powerful community within the Star Atlas ecosystem. The Data Cube NFT’s will not only provide a path to shared ownership of the largest starship in Galia, but also provide a host of other rewards, benefits, and exclusive player access to the Superphoenix Titan Ship itself"
-          imagePath="/assets/img4.jpg"
+          imagePath="/assets/artworks/img4.jpg"
           imageLocation="right"
           imageAlt="OUR MISSION"
         />
