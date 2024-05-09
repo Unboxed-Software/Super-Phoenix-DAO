@@ -24,7 +24,7 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
   const renderDesktopMenu = () => {
     return (
       <div className="hidden items-center space-x-4 text-lg md:flex">
-        <a href={SiteLinks.whitepaperV2} className=" hover:text-gray-400">
+        <a href={SiteLinks.whitepaperV2} className="text-gray-300 hover:text-gray-100">
           Whitepaper
         </a>
 
@@ -38,11 +38,9 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
             Roadmap
           </a>
         </Tooltip>
-        <Tooltip content="Coming Soon">
-          <a href="#" className="tooltip cursor-default text-gray-400">
-            Team
-          </a>
-        </Tooltip>
+        <a href="/team" className="tooltip text-gray-300 hover:text-gray-100">
+          Team
+        </a>
         <Tooltip content="Coming Soon">
           <a href="#" className="tooltip cursor-default text-gray-400">
             DAO
@@ -133,7 +131,7 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
   return (
     <TooltipProvider>
       <header className="fixed top-0 z-10 w-full">
-        <nav className="container mx-auto px-6 py-3">
+        <nav className="container mx-auto px-16 py-3">
           <div className="flex items-center justify-between">
             {renderSpacer()}
             {renderDesktopMenu()}

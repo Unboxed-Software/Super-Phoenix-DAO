@@ -6,8 +6,9 @@ type Props = {
   iconPath: string;
   size?: keyof typeof SIZE;
   alt: string;
+  className?: string;
 };
 
-export default function SVGIcon({ iconPath, size = 'md', alt }: Props) {
-  return <Image alt={alt} src={iconPath} width={SIZE[size]} height={SIZE[size]} />;
+export default function SVGIcon({ iconPath, size = 'md', alt, className }: Props) {
+  return <Image alt={alt} className={className} src={iconPath} width={SIZE[size]} height={SIZE[size]} />;
 }
