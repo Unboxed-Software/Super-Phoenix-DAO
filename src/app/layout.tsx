@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${semplicita.variable} scroll-smooth font-semplicita font-light`}>
-      <body>{children}</body>
+      <body className="h-full bg-gray-850">{children}</body>
     </html>
   );
 }
