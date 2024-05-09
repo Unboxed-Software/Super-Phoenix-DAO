@@ -22,21 +22,18 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
   const renderDesktopMenu = () => {
     return (
       <div className="hidden items-center space-x-4 text-lg md:flex">
-        <a href={SiteLinks.whitepaperV2} className="text-gray-300 hover:text-gray-100">
+        <a href={SiteLinks.whitepaperV2} className="cursor-pointer text-gray-300 hover:text-gray-100">
           Whitepaper
         </a>
-
-        <Tooltip content="Coming Soon">
-          <a href="#" className="tooltip cursor-default text-gray-400">
-            NFT
-          </a>
-        </Tooltip>
+        <a href={SiteLinks.nfts} className="cursor-pointer text-gray-300 hover:text-gray-100">
+          NFTs
+        </a>
         <Tooltip content="Coming Soon">
           <a href="#" className="tooltip cursor-default text-gray-400">
             Roadmap
           </a>
         </Tooltip>
-        <a href="/team" className="tooltip text-gray-300 hover:text-gray-100">
+        <a href="/team" className="cursor-pointer text-gray-300 hover:text-gray-100">
           Team
         </a>
         <Tooltip content="Coming Soon">
@@ -82,16 +79,16 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
           </div>
 
           <div className="flex flex-col items-center space-y-4">
-            <a href={SiteLinks.whitepaperV2} className="text-gray-300 active:text-gray-100">
+            <a href={SiteLinks.whitepaperV2} className="cursor-pointer text-gray-300 active:text-gray-100">
               Whitepaper
             </a>
-            <a href={SiteLinks.nfts} className="hover:text-gray-400">
+            <a href={SiteLinks.nfts} className="cursor-pointer text-gray-300 active:text-gray-100">
               NFT
             </a>
             <a href="#" className="text-gray-500" onClick={handleLinkClick}>
               Roadmap
             </a>
-            <a href="/team" className="text-gray-300 active:text-gray-100">
+            <a href="/team" className="cursor-pointer text-gray-300 active:text-gray-100">
               Team
             </a>
             <a href="#" className="text-gray-500" onClick={handleLinkClick}>
