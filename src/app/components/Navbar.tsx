@@ -5,6 +5,8 @@ import SVGIcon from './SVGIcon';
 import { SiteImage } from '@/app/models/images';
 import ConnectWalletButton from './wallet/ConnectWalletButton';
 import { Tooltip, TooltipProvider } from '@/components/ui/tooltip';
+import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButton?: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,10 +17,6 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
 
   const handleLinkClick = () => {
     alert('Coming Soon');
-  };
-
-  const renderSpacer = () => {
-    return <a href="#" className="text-2xl font-bold text-gray-800"></a>;
   };
 
   const renderDesktopMenu = () => {
@@ -58,27 +56,11 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
     );
   };
 
-  const renderCrossIcon = () => {
-    return (
-      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    );
-  };
-
-  const renderHamburgerMenuIcon = () => {
-    return (
-      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    );
-  };
-
   const renderMobileMenuIcon = () => {
     return (
       <div className="fixed right-5 top-5 z-20 md:hidden">
         <button className="focus:outline-none" onClick={toggleMenu}>
-          {renderHamburgerMenuIcon()}
+          <FontAwesomeIcon icon={faBars} size="lg" className="me-2" style={{ color: '#D1D1D1' }} />
         </button>
       </div>
     );
@@ -94,25 +76,25 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
             <div className="mb-4 flex items-center justify-between">
               <a href="#" className="text-2xl font-bold text-gray-800"></a>
               <button className="focus:outline-none" onClick={toggleMenu}>
-                {renderCrossIcon()}
+                <FontAwesomeIcon icon={faX} size="lg" className="me-2" style={{ color: '#D1D1D1' }} />
               </button>
             </div>
           </div>
 
           <div className="flex flex-col items-center space-y-4">
-            <a href={SiteLinks.whitepaperV2} className="hover:text-gray-400">
+            <a href={SiteLinks.whitepaperV2} className="text-gray-300 active:text-gray-100">
               Whitepaper
             </a>
-            <a href="#" className="text-gray-400" onClick={handleLinkClick}>
+            <a href="#" className="text-gray-500" onClick={handleLinkClick}>
               NFT
             </a>
-            <a href="#" className="text-gray-400" onClick={handleLinkClick}>
+            <a href="#" className="text-gray-500" onClick={handleLinkClick}>
               Roadmap
             </a>
-            <a href="#" className="text-gray-400" onClick={handleLinkClick}>
+            <a href="/team" className="text-gray-300 active:text-gray-100">
               Team
             </a>
-            <a href="#" className="text-gray-400" onClick={handleLinkClick}>
+            <a href="#" className="text-gray-500" onClick={handleLinkClick}>
               DAO
             </a>
             <div className="mt-5" />
@@ -131,9 +113,11 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
   return (
     <TooltipProvider>
       <header className="fixed top-0 z-10 w-full">
-        <nav className="container mx-auto px-16 py-3">
+        <nav className="container mx-auto px-5 py-3 md:px-16">
           <div className="flex items-center justify-between">
-            {renderSpacer()}
+            <a href="/" className="text-2xl font-bold text-gray-800">
+              <SVGIcon iconPath={SiteImage.icon} alt="logo" size="xl" />
+            </a>
             {renderDesktopMenu()}
             {renderMobileMenuIcon()}
           </div>

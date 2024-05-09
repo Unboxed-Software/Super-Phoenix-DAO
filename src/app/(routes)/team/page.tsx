@@ -85,7 +85,7 @@ export default async function LandingPage() {
   const teamMembersWithSmallImages = TEAM_MEMBERS.slice(2);
 
   return (
-    <div className="container flex h-full flex-col items-center bg-gray-850 pb-10">
+    <div className="container mt-10 flex h-full flex-col items-center bg-gray-850 pb-10">
       <div className="mx-3 md:mx-10">
         <p className="mb-3 mt-14 self-start font-normal tracking-widest text-neutral-400 md:mt-36">MISSION STATMENT</p>
         <div className="flex flex-col justify-center align-middle md:flex-row md:space-x-5">
