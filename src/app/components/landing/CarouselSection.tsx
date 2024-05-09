@@ -1,51 +1,37 @@
 import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
+const imgSrcs = [
+  '/assets/artworks/img5.jpg',
+  '/assets/artworks/img6.jpg',
+  '/assets/artworks/img7.jpg',
+  '/assets/artworks/img8.jpg',
+  '/assets/artworks/img9.jpg',
+  '/assets/artworks/img10.jpg',
+  '/assets/artworks/img11.jpg',
+  '/assets/artworks/img12.jpg',
+];
+
 export default function CarouselSection() {
   return (
     <div className="px-6">
       <Carousel>
         <CarouselContent>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="w-100 relative aspect-video">
-              <Image src="/assets/artworks/img5.jpg" fill alt="Caruosel Image" style={{ objectFit: 'cover' }} />
-            </div>
-          </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="w-100 relative aspect-video">
-              <Image src="/assets/artworks/img6.jpg" fill alt="Caruosel Image" style={{ objectFit: 'cover' }} />
-            </div>
-          </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="w-100 relative aspect-video">
-              <Image src="/assets/artworks/img7.jpg" fill alt="Caruosel Image" style={{ objectFit: 'cover' }} />
-            </div>
-          </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="w-100 relative aspect-video">
-              <Image src="/assets/artworks/img8.jpg" fill alt="Caruosel Image" style={{ objectFit: 'cover' }} />
-            </div>
-          </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="w-100 relative aspect-video">
-              <Image src="/assets/artworks/img9.jpg" fill alt="Caruosel Image" style={{ objectFit: 'cover' }} />
-            </div>
-          </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="w-100 relative aspect-video">
-              <Image src="/assets/artworks/img10.jpg" fill alt="Caruosel Image" style={{ objectFit: 'cover' }} />
-            </div>
-          </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="w-100 relative aspect-video">
-              <Image src="/assets/artworks/img11.jpg" fill alt="Caruosel Image" style={{ objectFit: 'cover' }} />
-            </div>
-          </CarouselItem>
-          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="w-100 relative aspect-video">
-              <Image src="/assets/artworks/img12.jpg" fill alt="Caruosel Image" style={{ objectFit: 'cover' }} />
-            </div>
-          </CarouselItem>
+          {imgSrcs.map((src, i) => (
+            <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/3">
+              <div className="w-100 relative aspect-video">
+                <Image
+                  src={src}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                  fill
+                  alt="Caruosel Image"
+                  style={{ objectFit: 'cover' }}
+                  quality={50}
+                  priority={true}
+                />
+              </div>
+            </CarouselItem>
+          ))}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
