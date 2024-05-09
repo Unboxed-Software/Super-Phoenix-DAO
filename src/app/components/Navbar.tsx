@@ -28,6 +28,9 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
         <a href={SiteLinks.nfts} target="_blank" className="cursor-pointer text-gray-300 hover:text-gray-100">
           NFTs
         </a>
+        <a href="/mint" className="text-gray-300 hover:text-gray-100">
+          Mint
+        </a>
         <Tooltip content="Coming Soon">
           <a href="#" className="tooltip cursor-default text-gray-400">
             Roadmap
@@ -61,7 +64,8 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
   const renderMobileMenuIcon = () => {
     return (
       <div className="fixed right-5 top-5 z-20 md:hidden">
-        <button className="focus:outline-none" onClick={toggleMenu}>
+        {isWithConnectWalletButton && <ConnectWalletButton />}
+        <button className="ms-3 focus:outline-none" onClick={toggleMenu}>
           <FontAwesomeIcon icon={faBars} size="lg" className="me-2" style={{ color: '#D1D1D1' }} />
         </button>
       </div>
@@ -92,7 +96,10 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
               Whitepaper
             </a>
             <a href={SiteLinks.nfts} target="_blank" className="cursor-pointer text-gray-300 active:text-gray-100">
-              NFT
+              NFTs
+            </a>
+            <a href="/mint" className="text-gray-300 active:text-gray-100">
+              Mint
             </a>
             <a href="#" className="text-gray-500" onClick={handleLinkClick}>
               Roadmap
