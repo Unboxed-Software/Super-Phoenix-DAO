@@ -116,7 +116,7 @@ export default async function LandingPage() {
       <div className="flex flex-col justify-center align-middle md:flex-row md:space-x-16">
         {teamMembersWithBigImages.map((teamMember) => (
           <div key={teamMember.name} className="mb-8">
-            <ImageWithOverlay src={teamMember.imgSrc} alt={teamMember.name} className="h-96">
+            <ImageWithOverlay src={teamMember.imgSrc} alt={teamMember.name} className="aspect-[3/4] w-72 rounded-xl">
               <div className="mx-3 flex h-full flex-col justify-between space-y-2 align-middle text-stone-200">
                 <div>
                   <SVGIcon iconPath={SiteImage.icon} alt="logo" size="xl" />
