@@ -97,9 +97,10 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
             <a href="#" className="text-gray-500" onClick={handleLinkClick}>
               Roadmap
             </a>
+            {/* Wait until the page is ready */}
             {/* <a href="/team" className="cursor-pointer text-gray-300 active:text-gray-100">
               Team
-            </a> */}
+            </a>  */}
             <a href="#" className="text-gray-500" onClick={handleLinkClick}>
               Team
             </a>
