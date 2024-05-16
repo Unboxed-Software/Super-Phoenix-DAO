@@ -8,7 +8,7 @@ import PartnersSection from '@/app/components/PartnersSection';
 const TEAM_MEMBERS = [
   {
     name: 'Craig Mahoney',
-    role: 'Title/Role',
+    role: 'Founder',
     imgSrc: '/assets/team/craig.png',
     socialLinks: [
       { icon: SiteImage.twitterIcon, link: SiteLinks.twitter, name: 'Twitter' },
@@ -20,7 +20,7 @@ const TEAM_MEMBERS = [
   },
   {
     name: 'Arktype',
-    role: 'Title/Role',
+    role: 'Lead Artist',
     imgSrc: '/assets/team/arktype.png',
     socialLinks: [
       { icon: SiteImage.twitterIcon, link: SiteLinks.twitter, name: 'Twitter' },
