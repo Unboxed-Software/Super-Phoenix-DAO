@@ -24,7 +24,6 @@ const PARTNERS = [
     website: 'https://x.com/Heimdallatlas',
     imgSrc: '/assets/partnerships/heimdall-industries-guild.jpg',
   },
-  { name: 'Aephia Industries', type: 'Guild Partner', website: '', imgSrc: '/assets/logo-placeholder.png' },
   {
     name: 'Rome',
     type: 'Guild Partner',
@@ -49,14 +48,12 @@ const PARTNERS = [
     website: 'https://x.com/Deep_Profits',
     imgSrc: '/assets/partnerships/deep-profits-guild.jpg',
   },
-  { name: 'DARK', type: 'Guild Partner', website: '', imgSrc: '/assets/logo-placeholder.png' },
   {
     name: 'The Unseen',
     type: 'Guild Partner',
     website: 'https://x.com/TheUnseenGuild',
     imgSrc: '/assets/partnerships/the-unseen-guild.jpg',
   },
-  { name: 'Shadow Loyal', type: 'Guild Partner', website: '', imgSrc: '/assets/logo-placeholder.png' },
   {
     name: 'COEXIST',
     type: 'Guild Partner',
@@ -105,7 +102,6 @@ const PARTNERS = [
     website: 'https://x.com/BTH2620',
     imgSrc: '/assets/partnerships/beyond-the-horizon-2620.jpg',
   },
-  { name: 'Krigs', type: 'Partner', website: 'https://x.com/Krigsfonik', imgSrc: '/assets/logo-placeholder.png' },
 ];
 
 export default function PartnersSection() {

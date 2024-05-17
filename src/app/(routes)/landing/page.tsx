@@ -42,7 +42,6 @@ export default async function LandingPage() {
           {/* Bottom Half */}
           <div className="flex flex-1 flex-col items-center justify-start">
             <div className="mt-10" />
-            {/* <p className="text-md text-center font-semibold text-stone-200 md:text-sm ">PREPARE FOR ARRIVAL</p> */}
             <p className="mx-3 mb-16 mt-16 text-center font-semplicita text-4xl font-light text-stone-200 md:text-5xl lg:w-3/4 ">
               BUILDING A COMMUNITY AROUND THE LARGEST WEB3 ASSET IN THE WORLD
             </p>
