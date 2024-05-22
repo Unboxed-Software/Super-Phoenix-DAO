@@ -9,7 +9,7 @@ if (!CM_ID) {
   throw new Error('Please provide the NEXT_PUBLIC_CM_ID env var');
 }
 
-const MINTING_PAYMENT_METHOD = {
+export const MINTING_PAYMENT_METHOD = {
   SOL: 'SOL',
   TOKEN: 'TOKEN',
 } as const;
@@ -45,7 +45,6 @@ export const mintWithSol = async (umi: Umi) => {
     )
     .sendAndConfirm(umi);
 
-  console.log(`sig: https://explorer.solana.com/tx/${base58.deserialize(sig.signature)[0]}?cluster=devnet`);
   return base58.deserialize(sig.signature)[0];
 };
 
@@ -60,8 +59,6 @@ export const mintWithToken = async (umi: Umi) => {
   const tokenPaymentMint = guardGroup?.guards.token2022Payment.value.mint;
   // @ts-expect-error - TS dosn't know that the solPayment.value exists
   const tokenPaymentDest = guardGroup?.guards.token2022Payment.value.destinationAta;
-
-  console.log(tokenPaymentMint, tokenPaymentDest);
 
   const nftMint = generateSigner(umi);
   const sig = await transactionBuilder()
@@ -85,6 +82,5 @@ export const mintWithToken = async (umi: Umi) => {
     )
     .sendAndConfirm(umi);
 
-  console.log(`sig: https://explorer.solana.com/tx/${base58.deserialize(sig.signature)[0]}?cluster=devnet`);
   return base58.deserialize(sig.signature)[0];
 };

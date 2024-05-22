@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { semplicita } from './models/fonts';
 import './globals.css';
-import Providers from './components/Providers';
+import GoogleAnalytics from './components/GoogleAnalytics';
 
 export const metadata: Metadata = {
   title: 'Super Phoenix DAO',
@@ -15,9 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${semplicita.variable} scroll-smooth font-semplicita font-light`}>
-      <body>
-        <Providers>{children}</Providers>
-      </body>
+      <GoogleAnalytics />
+      <body className="h-full bg-gray-850">{children}</body>
     </html>
   );
 }
