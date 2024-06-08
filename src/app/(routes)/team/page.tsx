@@ -48,8 +48,10 @@ const TEAM_MEMBERS = [
 ];
 
 export default async function LandingPage() {
-  const teamMembersWithBigImages = TEAM_MEMBERS.slice(0, 2);
-  const teamMembersWithSmallImages = TEAM_MEMBERS.slice(2);
+  // Removing big images
+  // const teamMembersWithBigImages = TEAM_MEMBERS.slice(0, 2);
+  // const teamMembersWithSmallImages = TEAM_MEMBERS.slice(2);
+  const teamMembersWithSmallImages = TEAM_MEMBERS;
 
   return (
     <div className="container mt-10 flex h-full flex-col items-center bg-gray-850 pb-10">
@@ -79,8 +81,8 @@ export default async function LandingPage() {
           </div>
         </div>
       </div>
-      <p className="mb-14 mt-48 font-normal tracking-widest text-neutral-400">MEET THE TEAM</p>
-      <div className="flex flex-col justify-center align-middle md:flex-row md:space-x-16">
+      <p className="mb-14 mt-32 font-normal tracking-widest text-neutral-400 text-2xl">MEET THE TEAM</p>
+      {/* <div className="flex flex-col justify-center align-middle md:flex-row md:space-x-16">
         {teamMembersWithBigImages.map((teamMember) => (
           <div key={teamMember.name} className="mb-8">
             <ImageWithOverlay src={teamMember.imgSrc} alt={teamMember.name} className="aspect-[3/4] w-72 rounded-xl">
@@ -104,8 +106,8 @@ export default async function LandingPage() {
             </ImageWithOverlay>
           </div>
         ))}
-      </div>
-      <div className="container mt-10 grid w-full grid-cols-1 place-content-center gap-20 md:grid-cols-2 md:place-content-between">
+      </div> */}
+      <div className="container grid w-full grid-cols-1 place-content-center gap-20 md:grid-cols-2 md:place-content-between">
         {teamMembersWithSmallImages.map((teamMember) => (
           <CardWithImage
             key={teamMember.name}
