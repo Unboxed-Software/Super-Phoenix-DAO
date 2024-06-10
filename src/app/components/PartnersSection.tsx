@@ -96,7 +96,7 @@ const PARTNERS: Partner[] = [
   // },
   {
     name: 'Polaris Fuel',
-    type:  PartnerType.Guild,
+    type: PartnerType.Guild,
     website: 'https://x.com/Polaris_Fue',
     imgSrc: '/assets/partnerships/polaris-fuel-guild.jpg',
   },
@@ -141,7 +141,7 @@ const PARTNERS: Partner[] = [
 function buildParterBlock(partner: Partner, isActive: boolean, onClick: (partner: Partner) => void) {
   return (
     <Avatar
-      onClick={()=>onClick(partner)}
+      onClick={() => onClick(partner)}
       className={`h-[100px] w-[100px] ${isActive ? 'border-2 border-gold-500' : ''}`}
       key={partner.name}
       rounded="lg"
@@ -158,14 +158,13 @@ function buildParterBlock(partner: Partner, isActive: boolean, onClick: (partner
 }
 
 export default function PartnersSection() {
-
-  let guildPartners = PARTNERS.filter(partner => partner.type === PartnerType.Guild);
-  let communityPartners = PARTNERS.filter(partner => partner.type === PartnerType.Community);
+  const guildPartners = PARTNERS.filter((partner) => partner.type === PartnerType.Guild);
+  const communityPartners = PARTNERS.filter((partner) => partner.type === PartnerType.Community);
 
   const [activePartner, setActivePartner] = useState(PARTNERS[8]);
   return (
     <div className="container mt-14 flex flex-col justify-center">
-      <p className="mb-8 text-center font-normal text-stone-400 text-2xl">SUPER PHOENIX DAO PARTNERSHIPS</p>
+      <p className="mb-8 text-center text-2xl font-normal text-stone-400">SUPER PHOENIX DAO PARTNERSHIPS</p>
       <div className="mb-5 flex flex-col justify-center p-3 align-middle md:mb-3 md:flex-row">
         <Avatar
           className="mb-3 h-[250px] w-[250px] self-center border-2 border-gold-500 md:mb-0"
@@ -194,14 +193,14 @@ export default function PartnersSection() {
           </a>
         </div>
       </div>
-      <p className='font-normal text-stone-400 pb-3 pt-5'>Guild Partners</p>
+      <p className="pb-3 pt-5 font-normal text-stone-400">Guild Partners</p>
       <div className="grid max-w-[90vw] auto-cols-max grid-flow-col grid-rows-1 gap-x-4 gap-y-6 overflow-x-scroll md:grid-rows-1">
         {guildPartners.map((partner) => {
           const isActive = activePartner.name === partner.name;
           return buildParterBlock(partner, isActive, setActivePartner);
         })}
       </div>
-      <p className='font-normal text-stone-400 pb-3 pt-5'>Community Partners</p>
+      <p className="pb-3 pt-5 font-normal text-stone-400">Community Partners</p>
       <div className="grid max-w-[90vw] auto-cols-max grid-flow-col grid-rows-1 gap-x-4 gap-y-6 overflow-x-scroll md:grid-rows-1">
         {communityPartners.map((partner) => {
           const isActive = activePartner.name === partner.name;

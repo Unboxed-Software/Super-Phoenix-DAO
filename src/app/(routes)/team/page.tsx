@@ -1,5 +1,4 @@
 import { SiteImage } from '@/app/models/images';
-import ImageWithOverlay from '@/app/components/ImageWithOverlay';
 import SVGIcon from '@/app/components/SVGIcon';
 import CardWithImage from '@/app/components/CardWithImage';
 import PartnersSection from '@/app/components/PartnersSection';
@@ -81,7 +80,7 @@ export default async function LandingPage() {
           </div>
         </div>
       </div>
-      <p className="mb-14 mt-32 font-normal tracking-widest text-neutral-400 text-2xl">MEET THE TEAM</p>
+      <p className="mb-14 mt-32 text-2xl font-normal tracking-widest text-neutral-400">MEET THE TEAM</p>
       {/* <div className="flex flex-col justify-center align-middle md:flex-row md:space-x-16">
         {teamMembersWithBigImages.map((teamMember) => (
           <div key={teamMember.name} className="mb-8">
