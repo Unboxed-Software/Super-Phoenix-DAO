@@ -136,6 +136,31 @@ const PARTNERS: Partner[] = [
     website: 'https://x.com/BTH2620',
     imgSrc: '/assets/partnerships/beyond-the-horizon-2620.jpg',
   },
+
+  {
+    name: 'Aephia Industries',
+    type: PartnerType.Guild,
+    website: 'https://x.com/aephia',
+    imgSrc: '/assets/partnerships/aephia.jpg',
+  },
+  {
+    name: 'Solaris',
+    type: PartnerType.Guild,
+    website: 'https://x.com/SOLARIS_byQtt',
+    imgSrc: '/assets/partnerships/solaris.jpg',
+  },
+  {
+    name: 'Krigs',
+    type: PartnerType.Community,
+    website: 'https://x.com/Krigsfoniks',
+    imgSrc: '/assets/partnerships/krigs.jpg',
+  },
+  {
+    name: 'Galia Merchants',
+    type: PartnerType.Community,
+    website: 'https://x.com/GaliaMerchants',
+    imgSrc: '/assets/partnerships/galia.jpg',
+  },
 ];
 
 function buildParterBlock(partner: Partner, isActive: boolean, onClick: (partner: Partner) => void) {
