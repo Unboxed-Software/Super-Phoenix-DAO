@@ -13,10 +13,10 @@ export default function CardWithImage({ children, imagePath, imageLocation, imag
       <div
         className={`flex w-[230px] flex-col space-x-3 align-middle lg:w-full ${imageLocation === 'right' ? 'lg:flex-row-reverse lg:text-end' : 'lg:flex-row'}`}
       >
-        <div className="w-100 relative aspect-square w-[230px] rounded-lg lg:h-[280px]">
+        <div className="relative aspect-square w-[230px] rounded-lg lg:h-[280px]">
           <Image src={imagePath} fill alt={imageAlt} className="rounded-lg" style={{ objectFit: 'cover' }} />
         </div>
-        <div>{children}</div>
+        <div className="w-full lg:w-2/3">{children}</div>
       </div>
     </div>
   );

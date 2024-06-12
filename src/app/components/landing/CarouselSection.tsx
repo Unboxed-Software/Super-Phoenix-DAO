@@ -18,8 +18,8 @@ export default function CarouselSection() {
       <Carousel>
         <CarouselContent>
           {imgSrcs.map((src, i) => (
-            <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/3">
-              <div className="w-100 relative aspect-video">
+            <CarouselItem key={i} className="basis-2/3 md:basis-1/2 lg:basis-1/3">
+              <div className="relative aspect-video w-full">
                 <Image
                   src={src}
                   sizes="(max-width: 768px) 100vw, (max-width: 1023px) 50vw, 33vw"
