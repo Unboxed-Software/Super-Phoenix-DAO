@@ -89,6 +89,7 @@ export const mintWithEarly4 = async (umi: Umi) => {
         group: MINTING_GROUP.EARLY4,
         mintArgs: {
           allowList: { merkleRoot: bs58.decode(res.merkleRoot) },
+          mintLimit: {id: 4}
         },
       }),
     )
@@ -138,6 +139,7 @@ export const mintWithEarly2 = async (umi: Umi) => {
             destination: solDestination,
           },
           allowList: { merkleRoot: bs58.decode(res.merkleRoot) },
+          mintLimit: {id: 2}
         },
       }),
     )
