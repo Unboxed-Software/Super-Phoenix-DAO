@@ -1,34 +1,72 @@
 'use server';
 
-import { EARLY_MINTING_GROUP } from '@/app/models/candyMachine';
+import { MINTING_GROUP } from '@/app/models/candyMachine';
 import { getMerkleProof, getMerkleRoot } from '@metaplex-foundation/mpl-candy-machine';
+import { PublicKey } from '@solana/web3.js';
 import base58 from 'bs58';
 
-const { WHITELIST_4_HOURS_IDS, WHITELIST_2_HOURS_IDS, NEXT_PUBLIC_SOLANA_EXPLORER_LINK, NEXT_PUBLIC_CM_ID } =
+const { NEXT_PUBLIC_SOLANA_EXPLORER_LINK, NEXT_PUBLIC_CM_ID, NEXT_PUBLIC_BASE_URL } =
   process.env;
+
+async function loadList(filePath: string): Promise<string[]> {
+  const response = await fetch(filePath);
+  const csvText = await response.text();
+  const rows = csvText.split('\n').map((row) => row.replace(/,/g, '').trim());
+  return rows;
+}
+
+const parseAndCheckList = async (listPath: string): Promise<PublicKey[]> => {
+  const rows = await loadList(listPath);
+
+  const addresses = rows.map((row) => new PublicKey(row));
+  if (addresses.some((address) => !address)) {
+    throw new Error(`Invalid address in ${listPath}`);
+  }
+
+  // Check for duplicates
+  const addressSet = new Set(addresses);
+  if (addressSet.size !== addresses.length) {
+    throw new Error(`Duplicate addresses found in ${listPath}`);
+  }
+
+  if (addresses.length == 0) {
+    throw new Error(`No addresses found in ${listPath}`);
+  }
+
+  return addresses;
+};
 
 export async function validateAccountForEarlyMinting(
   accountId: string,
-  earlyMintGroup: keyof typeof EARLY_MINTING_GROUP,
+  earlyMintGroup: keyof typeof MINTING_GROUP,
 ) {
-  if (!WHITELIST_4_HOURS_IDS || !WHITELIST_2_HOURS_IDS || !NEXT_PUBLIC_SOLANA_EXPLORER_LINK || !NEXT_PUBLIC_CM_ID) {
+  if (!NEXT_PUBLIC_SOLANA_EXPLORER_LINK || !NEXT_PUBLIC_CM_ID || !NEXT_PUBLIC_BASE_URL) {
     console.error(
       'Please provide the NEXT_PUBLIC_CM_ID, WHITELIST_4_HOURS_IDS, WHITELIST_2_HOURS_IDS, and NEXT_PUBLIC_SOLANA_EXPLORER_LINK env vars',
     );
     throw new Error('Internal server Error');
   }
 
+  const freelist = await parseAndCheckList(`${NEXT_PUBLIC_BASE_URL}/lists/freelist.csv`);
+  const whitelist = await parseAndCheckList(`${NEXT_PUBLIC_BASE_URL}/lists/whitelist.csv`);
+
   let allowList: string[] = [];
 
   switch (earlyMintGroup) {
-    case EARLY_MINTING_GROUP.EARLY4:
-      allowList = WHITELIST_4_HOURS_IDS.split(',');
+    case MINTING_GROUP.FL:
+      allowList = freelist.map((a) => a.toBase58());
       break;
-    case EARLY_MINTING_GROUP.EARLY2:
-      allowList = WHITELIST_2_HOURS_IDS.split(',');
+    case MINTING_GROUP.WLSOL:
+    case MINTING_GROUP.WLSA:
+      allowList = whitelist.map((a) => a.toBase58());
       break;
     default:
       throw new Error('Invalid early minting group');
+  }
+
+  const isFound = allowList.find((a) => a === accountId);
+  if (!isFound) {
+    throw new Error('Account not found in allow list');
   }
 
   return {

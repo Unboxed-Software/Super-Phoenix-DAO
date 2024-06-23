@@ -1,6 +1,6 @@
 import { fetchCandyGuard, fetchCandyMachine, mintV2, route } from '@metaplex-foundation/mpl-candy-machine';
 import { Umi, generateSigner, publicKey, transactionBuilder } from '@metaplex-foundation/umi';
-import { setComputeUnitLimit } from '@metaplex-foundation/mpl-toolbox';
+import { setComputeUnitLimit, setComputeUnitPrice } from '@metaplex-foundation/mpl-toolbox';
 import { base58 } from '@metaplex-foundation/umi/serializers';
 import bs58 from 'bs58';
 import { validateAccountForEarlyMinting } from '../(web3)/mint/actions';
@@ -11,24 +11,28 @@ if (!CM_ID) {
   throw new Error('Please provide the NEXT_PUBLIC_CM_ID env var');
 }
 
-export const EARLY_MINTING_GROUP = {
-  EARLY2: 'EARLY2',
-  EARLY4: 'EARLY4',
+export const FREELIST_MINTING_GROUP = {
+  FL: 'FL',
 } as const;
 
-export const REGUALR_MINTING_GROUP = {
-  SOL: 'SOL',
-  TOKEN: 'TOKEN',
+export const WHITELIST_MINTING_GROUP = {
+  WLSOL: 'WLSOL',
+  WLSA: 'WLSA',
 } as const;
 
-export const MINTING_GROUP = { ...EARLY_MINTING_GROUP, ...REGUALR_MINTING_GROUP };
+export const PUBLIC_MINTING_GROUP = {
+  PSOL: 'PSOL',
+  PSA: 'PSA',
+} as const;
 
-export const mintWithSol = async (umi: Umi) => {
+export const MINTING_GROUP = { ...FREELIST_MINTING_GROUP, ...WHITELIST_MINTING_GROUP, ...PUBLIC_MINTING_GROUP };
+
+export const mintWithPublicSOL = async (umi: Umi) => {
   const candyMachinePublicKey = publicKey(CM_ID);
 
   const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
   const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
-  const guardGroup = candyGuard.groups.find((g) => g.label === MINTING_GROUP.SOL);
+  const guardGroup = candyGuard.groups.find((g) => g.label === MINTING_GROUP.PSOL);
 
   // @ts-expect-error - TS dosn't know that the solPayment.value exists
   const solDestination = guardGroup?.guards.solPayment.value.destination;
@@ -36,6 +40,7 @@ export const mintWithSol = async (umi: Umi) => {
   const nftMint = generateSigner(umi);
   const sig = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
     .add(
       mintV2(umi, {
         candyMachine: candyMachine.publicKey,
@@ -44,7 +49,7 @@ export const mintWithSol = async (umi: Umi) => {
         collectionUpdateAuthority: candyMachine.authority,
         candyGuard: candyMachine.mintAuthority,
         tokenStandard: candyMachine.tokenStandard,
-        group: MINTING_GROUP.SOL,
+        group: MINTING_GROUP.PSOL,
         mintArgs: {
           solPayment: {
             destination: solDestination,
@@ -57,20 +62,66 @@ export const mintWithSol = async (umi: Umi) => {
   return base58.deserialize(sig.signature)[0];
 };
 
-export const mintWithEarly4 = async (umi: Umi) => {
+export const mintWithPublicToken = async (umi: Umi) => {
   const candyMachinePublicKey = publicKey(CM_ID);
-  const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
 
-  const res = await validateAccountForEarlyMinting(umi.identity.publicKey, MINTING_GROUP.EARLY4);
+  const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
+  const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
+  const guardGroup = candyGuard.groups.find((g) => g.label === MINTING_GROUP.PSA);
+
+  // @ts-expect-error - TS dosn't know that the solPayment.value exists
+  const tokenPaymentMint = guardGroup?.guards.tokenPayment.value.mint;
+  // @ts-expect-error - TS dosn't know that the solPayment.value exists
+  const tokenPaymentDest = guardGroup?.guards.tokenPayment.value.destinationAta;
 
   const nftMint = generateSigner(umi);
   const sig = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
+    .add(
+      mintV2(umi, {
+        candyMachine: candyMachine.publicKey,
+        nftMint,
+        collectionMint: candyMachine.collectionMint,
+        collectionUpdateAuthority: candyMachine.authority,
+        candyGuard: candyMachine.mintAuthority,
+        tokenStandard: candyMachine.tokenStandard,
+        group: MINTING_GROUP.PSA,
+        mintArgs: {
+          tokenPayment: {
+            destinationAta: tokenPaymentDest,
+            mint: tokenPaymentMint,
+          },
+        },
+      }),
+    ).sendAndConfirm(umi, {send: {skipPreflight: true}});
+
+
+  return base58.deserialize(sig.signature)[0];
+};
+
+
+export const mintWithFreelist = async (umi: Umi) => {
+  const candyMachinePublicKey = publicKey(CM_ID);
+  const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
+
+  const res = await validateAccountForEarlyMinting(umi.identity.publicKey, MINTING_GROUP.FL);
+
+  const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
+  const guardGroup = candyGuard.groups.find((g) => g.label === MINTING_GROUP.FL);
+
+  // @ts-expect-error - TS dosn't know that the solPayment.value exists
+  const limitID = guardGroup?.guards.mintLimit.value.id;
+
+  const nftMint = generateSigner(umi);
+  const sig = await transactionBuilder()
+    .add(setComputeUnitLimit(umi, { units: 800_000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
     .add(
       route(umi, {
         guard: 'allowList',
         candyMachine: candyMachine.publicKey,
-        group: MINTING_GROUP.EARLY4,
+        group: MINTING_GROUP.FL,
         routeArgs: {
           path: 'proof',
           merkleRoot: bs58.decode(res.merkleRoot),
@@ -86,10 +137,10 @@ export const mintWithEarly4 = async (umi: Umi) => {
         collectionUpdateAuthority: candyMachine.authority,
         candyGuard: candyMachine.mintAuthority,
         tokenStandard: candyMachine.tokenStandard,
-        group: MINTING_GROUP.EARLY4,
+        group: MINTING_GROUP.FL,
         mintArgs: {
           allowList: { merkleRoot: bs58.decode(res.merkleRoot) },
-          mintLimit: { id: 4 },
+          mintLimit: { id: limitID },
         },
       }),
     )
@@ -98,26 +149,30 @@ export const mintWithEarly4 = async (umi: Umi) => {
   return base58.deserialize(sig.signature)[0];
 };
 
-export const mintWithEarly2 = async (umi: Umi) => {
+export const mintWithWhitelistSOL = async (umi: Umi) => {
   const candyMachinePublicKey = publicKey(CM_ID);
-
   const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
+
+  const res = await validateAccountForEarlyMinting(umi.identity.publicKey, MINTING_GROUP.WLSOL);
+
   const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
-  const guardGroup = candyGuard.groups.find((g) => g.label === MINTING_GROUP.SOL);
+  const guardGroup = candyGuard.groups.find((g) => g.label === MINTING_GROUP.WLSOL);
+
+  // @ts-expect-error - TS dosn't know that the solPayment.value exists
+  const limitID = guardGroup?.guards.mintLimit.value.id;
 
   // @ts-expect-error - TS dosn't know that the solPayment.value exists
   const solDestination = guardGroup?.guards.solPayment.value.destination;
 
-  const res = await validateAccountForEarlyMinting(umi.identity.publicKey, MINTING_GROUP.EARLY2);
-
   const nftMint = generateSigner(umi);
   const sig = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
     .add(
       route(umi, {
         guard: 'allowList',
         candyMachine: candyMachine.publicKey,
-        group: MINTING_GROUP.EARLY2,
+        group: MINTING_GROUP.WLSOL,
         routeArgs: {
           path: 'proof',
           merkleRoot: bs58.decode(res.merkleRoot),
@@ -133,13 +188,13 @@ export const mintWithEarly2 = async (umi: Umi) => {
         collectionUpdateAuthority: candyMachine.authority,
         candyGuard: candyMachine.mintAuthority,
         tokenStandard: candyMachine.tokenStandard,
-        group: MINTING_GROUP.EARLY2,
+        group: MINTING_GROUP.WLSOL,
         mintArgs: {
+          allowList: { merkleRoot: bs58.decode(res.merkleRoot) },
+          mintLimit: { id: limitID },
           solPayment: {
             destination: solDestination,
           },
-          allowList: { merkleRoot: bs58.decode(res.merkleRoot) },
-          mintLimit: { id: 2 },
         },
       }),
     )
@@ -148,21 +203,39 @@ export const mintWithEarly2 = async (umi: Umi) => {
   return base58.deserialize(sig.signature)[0];
 };
 
-export const mintWithToken = async (umi: Umi) => {
+export const mintWithWhitelistToken = async (umi: Umi) => {
   const candyMachinePublicKey = publicKey(CM_ID);
-
   const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
+
+  const res = await validateAccountForEarlyMinting(umi.identity.publicKey, MINTING_GROUP.WLSA);
+
   const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
-  const guardGroup = candyGuard.groups.find((g) => g.label === MINTING_GROUP.TOKEN);
+  const guardGroup = candyGuard.groups.find((g) => g.label === MINTING_GROUP.WLSA);
 
   // @ts-expect-error - TS dosn't know that the solPayment.value exists
-  const tokenPaymentMint = guardGroup?.guards.token2022Payment.value.mint;
+  const limitID = guardGroup?.guards.mintLimit.value.id;
+
   // @ts-expect-error - TS dosn't know that the solPayment.value exists
-  const tokenPaymentDest = guardGroup?.guards.token2022Payment.value.destinationAta;
+  const tokenPaymentMint = guardGroup?.guards.tokenPayment.value.mint;
+  // @ts-expect-error - TS dosn't know that the solPayment.value exists
+  const tokenPaymentDest = guardGroup?.guards.tokenPayment.value.destinationAta;
 
   const nftMint = generateSigner(umi);
   const sig = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
+    .add(
+      route(umi, {
+        guard: 'allowList',
+        candyMachine: candyMachine.publicKey,
+        group: MINTING_GROUP.WLSA,
+        routeArgs: {
+          path: 'proof',
+          merkleRoot: bs58.decode(res.merkleRoot),
+          merkleProof: res.merkleProof.map((p) => bs58.decode(p)),
+        },
+      }),
+    )
     .add(
       mintV2(umi, {
         candyMachine: candyMachine.publicKey,
@@ -171,9 +244,11 @@ export const mintWithToken = async (umi: Umi) => {
         collectionUpdateAuthority: candyMachine.authority,
         candyGuard: candyMachine.mintAuthority,
         tokenStandard: candyMachine.tokenStandard,
-        group: MINTING_GROUP.TOKEN,
+        group: MINTING_GROUP.WLSA,
         mintArgs: {
-          token2022Payment: {
+          allowList: { merkleRoot: bs58.decode(res.merkleRoot) },
+          mintLimit: { id: limitID },
+          tokenPayment: {
             destinationAta: tokenPaymentDest,
             mint: tokenPaymentMint,
           },

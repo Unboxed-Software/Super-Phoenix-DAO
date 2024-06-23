@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Providers from '../components/Providers';
 import { Toaster } from '@/components/ui/toaster';
+import Web3Navbar from '../components/Web3Navbar';
 
 export default function RootLayout({
   children,
@@ -9,9 +10,9 @@ export default function RootLayout({
 }>) {
   return (
     <Providers>
-      <Navbar isWithConnectWalletButton />
+      <Web3Navbar />
       <div>{children}</div>
-      <Toaster />
+      <Web3Navbar />
     </Providers>
   );
 }
