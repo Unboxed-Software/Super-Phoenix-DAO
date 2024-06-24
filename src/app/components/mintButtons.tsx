@@ -102,47 +102,72 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
   const tooltipText = !wallet.connected ? 'Please connect your wallet' : !isLive ? 'Minting is not live yet' : '';
 
   return (
-    <div className="flex space-x-2">
-      <Button
-        isLoading={isMinting}
-        onClick={() => handleMinting(MINTING_GROUP.PSOL)}
-        variant="gold"
-        className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
-      >
-        Public SOL
-      </Button>
-      <Button
-        isLoading={isMinting}
-        onClick={() => handleMinting(MINTING_GROUP.PSA)}
-        variant="gold"
-        className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
-      >
-        Public Star Atlas
-      </Button>
-      <Button
-        isLoading={isMinting}
-        onClick={() => handleMinting(MINTING_GROUP.WLSOL)}
-        variant="gold"
-        className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
-      >
-        Whitelist SOL
-      </Button>
-      <Button
-        isLoading={isMinting}
-        onClick={() => handleMinting(MINTING_GROUP.WLSA)}
-        variant="gold"
-        className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
-      >
-        Whitelist Star Atlas
-      </Button>
-      <Button
-        isLoading={isMinting}
-        onClick={() => handleMinting(MINTING_GROUP.FL)}
-        variant="gold"
-        className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
-      >
-        Freelist
-      </Button>
+    <div className="container flex flex-col space-y-2 md:w-1/2">
+      <div className="flex justify-between align-middle">
+        <div>
+          <p className="text-2xl text-neutral-300"> Freelist: </p>
+        </div>
+        <div className="flex w-52 space-x-2">
+          <Button
+            isLoading={isMinting}
+            onClick={() => handleMinting(MINTING_GROUP.FL)}
+            variant="gold"
+            className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+          >
+            Free
+          </Button>
+        </div>
+      </div>
+      <div className="flex justify-between align-middle">
+        <div>
+          <p className="text-2xl text-neutral-300"> Whitelist: </p>
+        </div>
+        <div className="flex w-52 space-x-2">
+          <Button
+            isLoading={isMinting}
+            disabled={!wallet.connected || isMinting || !isLive}
+            onClick={() => handleMinting(MINTING_GROUP.WLSOL)}
+            variant="gold"
+            className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+          >
+            1.25 SOL
+          </Button>
+          <Button
+            isLoading={isMinting}
+            disabled={!wallet.connected || isMinting || !isLive}
+            onClick={() => handleMinting(MINTING_GROUP.WLSA)}
+            variant="gold"
+            className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+          >
+            60K Atlas
+          </Button>
+        </div>
+      </div>
+      <div className="flex justify-between align-middle">
+        <div>
+          <p className="text-2xl text-neutral-300"> Public: </p>
+        </div>
+        <div className="flex w-52 space-x-2">
+          <Button
+            isLoading={isMinting}
+            disabled={!wallet.connected || isMinting || !isLive}
+            onClick={() => handleMinting(MINTING_GROUP.PSOL)}
+            variant="gold"
+            className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+          >
+            1.5 SOL
+          </Button>
+          <Button
+            isLoading={isMinting}
+            disabled={!wallet.connected || isMinting || !isLive}
+            onClick={() => handleMinting(MINTING_GROUP.PSA)}
+            variant="gold"
+            className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+          >
+            73k Atlas
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
