@@ -1,15 +1,13 @@
 'use client';
-import { SiteLinks } from '@/app/models/links';
-import React, { useState } from 'react';
+import React from 'react';
 import SVGIcon from './SVGIcon';
 import { SiteImage } from '@/app/models/images';
-import ConnectWalletButton from './wallet/ConnectWalletButton';
-import { Tooltip, TooltipProvider } from '@/components/ui/tooltip';
-import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import dynamic from 'next/dynamic';
+
+const ConnectWalletButton = dynamic(() => import('./wallet/ConnectWalletButton'), { ssr: false });
 
 function Web3Navbar() {
-
   return (
     <TooltipProvider>
       <header className="fixed top-0 z-10 w-full">

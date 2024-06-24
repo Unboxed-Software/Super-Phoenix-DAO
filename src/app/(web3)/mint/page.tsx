@@ -1,13 +1,8 @@
 import MintButtonsWrapper from '@/app/components/mintButtonsWrapper';
 import MintCount from '@/app/components/MintCount';
-import useUmi from '@/app/components/wallet/useUmi';
 import { SiteImage } from '@/app/models/images';
 import { SiteLinks as SiteLinks } from '@/app/models/links';
-import { fetchCandyMachine } from '@metaplex-foundation/mpl-candy-machine';
-import { publicKey } from '@metaplex-foundation/umi';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-
 
 export default async function MintPage() {
   return (
