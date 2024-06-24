@@ -1,26 +1,9 @@
-'use client';
-import useUmi from '@/app/components/wallet/useUmi';
-import { fetchCandyMachine } from '@metaplex-foundation/mpl-candy-machine';
-import { publicKey } from '@metaplex-foundation/umi';
-import { useEffect, useState } from 'react';
-
-function MintCount() {
-  const [mintedCount, setMintedCount] = useState(0);
-  const umi = useUmi();
-
-  useEffect(() => {
-    updateMintedCount();
-  }, []);
-
-  const updateMintedCount = () => {
-    const candyMachinePublicKey = publicKey(process.env.NEXT_PUBLIC_CM_ID as string);
-    fetchCandyMachine(umi.umi, candyMachinePublicKey).then((candyMachine) => {
-      const mintedCount: number = Number(candyMachine.itemsRedeemed);
-      setMintedCount(mintedCount);
-    });
-  };
-
-  return <>{mintedCount + 516}/10301 Minted</>;
+function MintCount({ mintedCount }: { mintedCount: number }) {
+  return (
+    <p className="mx-3 mb-16 text-center font-semplicita text-xl font-light text-stone-200 md:text-2xl lg:w-3/4 ">
+      {`${mintedCount + 516} /10301 Minted`}
+    </p>
+  );
 }
 
 export default MintCount;

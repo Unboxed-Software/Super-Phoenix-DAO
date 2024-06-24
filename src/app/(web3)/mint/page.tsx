@@ -1,5 +1,4 @@
 import MintButtonsWrapper from '@/app/components/mintButtonsWrapper';
-import MintCount from '@/app/components/MintCount';
 import { SiteImage } from '@/app/models/images';
 import { SiteLinks as SiteLinks } from '@/app/models/links';
 import Image from 'next/image';
@@ -41,9 +40,6 @@ export default async function MintPage() {
             {/* <p className="text-md text-center font-semibold text-stone-200 md:text-sm ">PREPARE FOR ARRIVAL</p> */}
             <p className="mx-3 mb-5 mt-16 text-center font-semplicita text-4xl font-light text-stone-200 md:text-5xl lg:w-3/4 ">
               Mint CORE Data Cubes
-            </p>
-            <p className="mx-3 mb-16 text-center font-semplicita text-xl font-light text-stone-200 md:text-2xl lg:w-3/4 ">
-              <MintCount />
             </p>
             <MintButtonsWrapper />
           </div>

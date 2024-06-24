@@ -1,5 +1,5 @@
 'use client';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   MINTING_GROUP,
   mintWithFreelist,
@@ -12,13 +12,14 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { ToastAction } from '@radix-ui/react-toast';
 import Link from 'next/link';
-import { CandyGuard } from '@metaplex-foundation/mpl-candy-machine';
-import { Umi, formatDateTime } from '@metaplex-foundation/umi';
+import { CandyGuard, fetchCandyMachine } from '@metaplex-foundation/mpl-candy-machine';
+import { Umi, formatDateTime, publicKey } from '@metaplex-foundation/umi';
 import dayjs from 'dayjs';
 import { WalletContextState } from '@solana/wallet-adapter-react';
 import { fetchDigitalAsset } from '@metaplex-foundation/mpl-token-metadata';
 import RevealModal, { TIER_INFO } from './revealModal';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import MintCount from './MintCount';
 
 const EXPLORER_LINK = process.env.NEXT_PUBLIC_SOLANA_EXPLORER_LINK;
 
@@ -33,6 +34,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
 
   const [open, setOpen] = useState(false);
   const [tier, setTier] = useState<keyof typeof TIER_INFO>();
+  const [mintedCount, setMintedCount] = useState(0);
 
   const { toast } = useToast();
   const timeUntilLaunch = useMemo(() => {
@@ -40,6 +42,18 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
     const startDate = dayjs(formatDateTime(candyGuard.guards.startDate.value.date));
     return startDate.diff(dayjs(), 'minute');
   }, [candyGuard]);
+
+  const updateMintedCount = () => {
+    const candyMachinePublicKey = publicKey(process.env.NEXT_PUBLIC_CM_ID as string);
+    fetchCandyMachine(umi, candyMachinePublicKey).then((candyMachine) => {
+      const mintedCount: number = Number(candyMachine.itemsRedeemed);
+      setMintedCount(mintedCount);
+    });
+  };
+
+  useEffect(() => {
+    updateMintedCount();
+  }, []);
 
   const handleMinting = async (mintingGroup: keyof typeof MINTING_GROUP) => {
     setIsMinting(true);
@@ -79,6 +93,8 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
         setTier(tier);
         setOpen(true);
       }
+
+      updateMintedCount();
 
       toast({
         title: 'Minted successfully',
@@ -121,6 +137,9 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
 
   return (
     <>
+      <div className="flex w-full justify-center">
+        <MintCount mintedCount={mintedCount} />
+      </div>
       {!wallet.connected && (
         <div className="container mb-6 max-w-[500px]">
           <Alert variant="attention">
