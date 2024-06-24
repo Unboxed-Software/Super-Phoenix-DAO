@@ -73,7 +73,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
     try {
       const { tx, mint } = await promise;
       const mintMetadata = await fetchDigitalAsset(umi, mint);
-      const tier = mintMetadata.metadata.name.toLowerCase() as keyof typeof TIER_INFO;
+      const tier = mintMetadata.metadata.name as keyof typeof TIER_INFO;
 
       if (TIER_INFO[tier]) {
         setTier(tier);
@@ -97,11 +97,19 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
       });
     } catch (err: any) {
       console.log(`ERROR\n\n\n${err}\n\n`);
-      toast({
-        title: 'Something went wrong while minting',
-        description: err.message,
-        variant: 'destructive',
-      });
+      if (err.message.includes('maximum number of allowed mints was reached')) {
+        toast({
+          title: 'Maximum number of allowed mints was reached',
+          description: 'Please try again when the public mint goes live',
+          variant: 'destructive',
+        });
+      } else {
+        toast({
+          title: 'Something went wrong while minting',
+          description: err.message,
+          variant: 'destructive',
+        });
+      }
     } finally {
       setIsMinting(false);
     }

@@ -1,3 +1,4 @@
+import { Toaster } from '@/components/ui/toaster';
 import Providers from '../components/Providers';
 import Web3Navbar from '../components/Web3Navbar';
 
@@ -11,6 +12,7 @@ export default function RootLayout({
       <Web3Navbar />
       <div>{children}</div>
       <Web3Navbar />
+      <Toaster />
     </Providers>
   );
 }
