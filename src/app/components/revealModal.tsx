@@ -35,13 +35,12 @@ type Props = {
 
 export default function RevealModal({ open, tier, onClose }: Props) {
   const tierObj = TIER_INFO[tier];
-
-  const tweetLink = `https://twitter.com/intent/post?text=I%20just%20minted%20a%20${tierObj.rarity}%20Super%20Phoenix%20Core%20Data%20Cube!%0A%0A%40SuperPhoenixDAO&url=https%3A%2F%2Fsuperphoenixdao.com%2Fmint`;
+  const tweetLink = `https://twitter.com/intent/post?text=I%20just%20minted%20a%20${tierObj.rarity}%20Super%20Phoenix%20Core%20Data%20Cube!%0A%0A%40SuperPhoenixDAO%0A%0A${tierObj.src}&url=https%3A%2F%2Fsuperphoenixdao.com%2Fmint`;
   return (
     <Dialog modal open={open}>
-      <DialogContent onClose={onClose}>
+      <DialogContent className="border-gray-500 bg-gray-850" onClose={onClose}>
         <DialogHeader>
-          <DialogTitle className="flex justify-center align-middle text-5xl">CUBE SECURED</DialogTitle>
+          <DialogTitle className="flex justify-center align-middle text-5xl text-white">CUBE SECURED</DialogTitle>
           <div>
             <video
               preload="auto"
@@ -52,11 +51,11 @@ export default function RevealModal({ open, tier, onClose }: Props) {
             />
           </div>
         </DialogHeader>
-        <DialogFooter>
-          <a href={tweetLink} target="_blank" className="text-2xl">
+        <div className="flex justify-center align-middle">
+          <a href={tweetLink} target="_blank" className="text-2xl text-white underline">
             Annouce your enrolment
           </a>
-        </DialogFooter>
+        </div>
       </DialogContent>
     </Dialog>
   );

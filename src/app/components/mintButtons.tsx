@@ -133,7 +133,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
               disabled={!wallet.connected || isMinting || !isFreeMintLive}
               onClick={() => handleMinting(MINTING_GROUP.FL)}
               variant="gold"
-              className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+              className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
             >
               Free
             </Button>
@@ -149,7 +149,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
               disabled={!wallet.connected || isMinting || !isWhitelistMintLive}
               onClick={() => handleMinting(MINTING_GROUP.WLSOL)}
               variant="gold"
-              className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+              className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
             >
               1.25 SOL
             </Button>
@@ -158,7 +158,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
               disabled={!wallet.connected || isMinting || !isWhitelistMintLive}
               onClick={() => handleMinting(MINTING_GROUP.WLSA)}
               variant="gold"
-              className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+              className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
             >
               60K Atlas
             </Button>
@@ -174,7 +174,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
               disabled={!wallet.connected || isMinting || !isPublicMintLive}
               onClick={() => handleMinting(MINTING_GROUP.PSOL)}
               variant="gold"
-              className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+              className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
             >
               1.5 SOL
             </Button>
@@ -183,7 +183,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
               disabled={!wallet.connected || isMinting || !isPublicMintLive}
               onClick={() => handleMinting(MINTING_GROUP.PSA)}
               variant="gold"
-              className="appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+              className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
             >
               73k Atlas
             </Button>
