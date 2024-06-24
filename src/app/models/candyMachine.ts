@@ -59,7 +59,7 @@ export const mintWithPublicSOL = async (umi: Umi) => {
     )
     .sendAndConfirm(umi);
 
-  return base58.deserialize(sig.signature)[0];
+  return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };
 
 export const mintWithPublicToken = async (umi: Umi) => {
@@ -94,12 +94,11 @@ export const mintWithPublicToken = async (umi: Umi) => {
           },
         },
       }),
-    ).sendAndConfirm(umi, {send: {skipPreflight: true}});
+    )
+    .sendAndConfirm(umi, { send: { skipPreflight: true } });
 
-
-  return base58.deserialize(sig.signature)[0];
+  return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };
-
 
 export const mintWithFreelist = async (umi: Umi) => {
   const candyMachinePublicKey = publicKey(CM_ID);
@@ -110,7 +109,7 @@ export const mintWithFreelist = async (umi: Umi) => {
   const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
   const guardGroup = candyGuard.groups.find((g) => g.label === MINTING_GROUP.FL);
 
-  // @ts-expect-error - TS dosn't know that the solPayment.value exists
+  // @ts-expect-error - TS dosn't know that the mintLimit.value exists
   const limitID = guardGroup?.guards.mintLimit.value.id;
 
   const nftMint = generateSigner(umi);
@@ -146,7 +145,7 @@ export const mintWithFreelist = async (umi: Umi) => {
     )
     .sendAndConfirm(umi);
 
-  return base58.deserialize(sig.signature)[0];
+  return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };
 
 export const mintWithWhitelistSOL = async (umi: Umi) => {
@@ -200,7 +199,7 @@ export const mintWithWhitelistSOL = async (umi: Umi) => {
     )
     .sendAndConfirm(umi);
 
-  return base58.deserialize(sig.signature)[0];
+  return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };
 
 export const mintWithWhitelistToken = async (umi: Umi) => {
@@ -257,5 +256,5 @@ export const mintWithWhitelistToken = async (umi: Umi) => {
     )
     .sendAndConfirm(umi);
 
-  return base58.deserialize(sig.signature)[0];
+  return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };

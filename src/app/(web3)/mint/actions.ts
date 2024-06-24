@@ -5,8 +5,7 @@ import { getMerkleProof, getMerkleRoot } from '@metaplex-foundation/mpl-candy-ma
 import { PublicKey } from '@solana/web3.js';
 import base58 from 'bs58';
 
-const { NEXT_PUBLIC_SOLANA_EXPLORER_LINK, NEXT_PUBLIC_CM_ID, NEXT_PUBLIC_BASE_URL } =
-  process.env;
+const { NEXT_PUBLIC_SOLANA_EXPLORER_LINK, NEXT_PUBLIC_CM_ID, NEXT_PUBLIC_BASE_URL } = process.env;
 
 async function loadList(filePath: string): Promise<string[]> {
   const response = await fetch(filePath);
@@ -36,10 +35,7 @@ const parseAndCheckList = async (listPath: string): Promise<PublicKey[]> => {
   return addresses;
 };
 
-export async function validateAccountForEarlyMinting(
-  accountId: string,
-  earlyMintGroup: keyof typeof MINTING_GROUP,
-) {
+export async function validateAccountForEarlyMinting(accountId: string, earlyMintGroup: keyof typeof MINTING_GROUP) {
   if (!NEXT_PUBLIC_SOLANA_EXPLORER_LINK || !NEXT_PUBLIC_CM_ID || !NEXT_PUBLIC_BASE_URL) {
     console.error(
       'Please provide the NEXT_PUBLIC_CM_ID, WHITELIST_4_HOURS_IDS, WHITELIST_2_HOURS_IDS, and NEXT_PUBLIC_SOLANA_EXPLORER_LINK env vars',

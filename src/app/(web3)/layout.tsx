@@ -1,6 +1,4 @@
-import Navbar from '../components/Navbar';
 import Providers from '../components/Providers';
-import { Toaster } from '@/components/ui/toaster';
 import Web3Navbar from '../components/Web3Navbar';
 
 export default function RootLayout({
