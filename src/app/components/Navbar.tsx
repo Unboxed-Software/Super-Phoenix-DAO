@@ -3,12 +3,11 @@ import { SiteLinks } from '@/app/models/links';
 import React, { useState } from 'react';
 import SVGIcon from './SVGIcon';
 import { SiteImage } from '@/app/models/images';
-import ConnectWalletButton from './wallet/ConnectWalletButton';
 import { Tooltip, TooltipProvider } from '@/components/ui/tooltip';
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButton?: boolean }) {
+function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -27,6 +26,9 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
         </a>
         <a href={SiteLinks.nfts} target="_blank" className="cursor-pointer text-gray-300 hover:text-gray-100">
           NFTs
+        </a>
+        <a href="/mint" className="text-gray-300 hover:text-gray-100">
+          Mint
         </a>
         <Tooltip content="Coming Soon">
           <a href="#" className="tooltip cursor-default text-gray-400">
@@ -53,7 +55,6 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
         <a href={SiteLinks.discord} className="mx-2 inline-block text-white">
           <SVGIcon iconPath={SiteImage.discordIcon} alt="Discord" size="md" />
         </a>
-        {isWithConnectWalletButton && <ConnectWalletButton />}
       </div>
     );
   };
@@ -61,7 +62,7 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
   const renderMobileMenuIcon = () => {
     return (
       <div className="fixed right-5 top-5 z-20 md:hidden">
-        <button className="focus:outline-none" onClick={toggleMenu}>
+        <button className="ms-3 focus:outline-none" onClick={toggleMenu}>
           <FontAwesomeIcon icon={faBars} size="lg" className="me-2" style={{ color: '#D1D1D1' }} />
         </button>
       </div>
@@ -92,7 +93,10 @@ function Navbar({ isWithConnectWalletButton = false }: { isWithConnectWalletButt
               Whitepaper
             </a>
             <a href={SiteLinks.nfts} target="_blank" className="cursor-pointer text-gray-300 active:text-gray-100">
-              NFT
+              NFTs
+            </a>
+            <a href="/mint" className="text-gray-300 active:text-gray-100">
+              Mint
             </a>
             <a href="#" className="cursor-pointer text-gray-300 active:text-gray-100" onClick={handleLinkClick}>
               Roadmap
