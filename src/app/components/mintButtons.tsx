@@ -21,6 +21,7 @@ import { fetchDigitalAsset } from '@metaplex-foundation/mpl-token-metadata';
 import RevealModal, { TIER_INFO } from './revealModal';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import MintCount from './MintCount';
+import CountDown from './landing/CountDown';
 
 dayjs.extend(relativeTime);
 
@@ -41,25 +42,8 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
 
   const { toast } = useToast();
 
-  const {
-    timeToLuanch,
-    timeToLaunchInMintuesInMintues,
-    timeToWhitelistInMuntues,
-    timeToWhitelist,
-    timeToFreelistInMuntues,
-    timeToFreelist,
-  } = useMemo(() => {
-    // @ts-expect-error - candyGuard type is not correct
-    const startDate = dayjs(formatDateTime(candyGuard.guards.startDate.value.date));
-    return {
-      timeToLaunchInMintuesInMintues: startDate.diff(dayjs(), 'minute'),
-      timeToLuanch: startDate.toNow(),
-      timeToFreelistInMuntues: startDate.subtract(4, 'hours').diff(dayjs(), 'minute'),
-      timeToFreelist: startDate.subtract(4, 'hours').toNow(),
-      timeToWhitelistInMuntues: startDate.subtract(2, 'hours').diff(dayjs(), 'minute'),
-      timeToWhitelist: startDate.subtract(2, 'hours').toNow(),
-    };
-  }, [candyGuard]);
+  // @ts-expect-error - candyGuard type is not correct
+  const launchDate = dayjs(formatDateTime(candyGuard.guards.startDate.value.date));
 
   const updateMintedCount = () => {
     const candyMachinePublicKey = publicKey(process.env.NEXT_PUBLIC_CM_ID as string);
@@ -156,9 +140,9 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
     }
   };
 
-  const isFreeMintLive = timeToFreelistInMuntues <= 0;
-  const isWhitelistMintLive = timeToWhitelistInMuntues <= 0;
-  const isPublicMintLive = timeToLaunchInMintuesInMintues <= 0;
+  const isFreeMintLive = launchDate.subtract(4, 'hours').diff(dayjs(), 'minute') <= 0;
+  const isWhitelistMintLive = launchDate.subtract(2, 'hours').diff(dayjs(), 'minute') <= 0;
+  const isPublicMintLive = launchDate.diff(dayjs(), 'minute') <= 0;
 
   return (
     <>
@@ -176,12 +160,11 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
 
       <div className="container flex flex-col space-y-5 md:w-1/2">
         <div className="flex justify-between align-middle">
-          <div>
+          <div className="flex w-52 flex-col align-middle md:w-80">
             <p className="text-2xl text-neutral-300"> Freelist: </p>
-            <p className="text-m text-neutral-300">Must be on freelist</p>
-
+            <p className="text-m text-neutral-300">1 per wallet on freelist</p>
           </div>
-          <div className="flex w-52 space-x-2">
+          <div className="flex w-52 space-x-2 align-middle">
             {isFreeMintLive ? (
               <>
                 <Button
@@ -195,19 +178,15 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
                 </Button>
               </>
             ) : (
-              <p className="font-medium text-white">{`Coming in ${timeToFreelist}`}</p>
+              <CountDown targetDate={launchDate.subtract(4, 'hours')} />
             )}
           </div>
         </div>
         <div className="flex justify-between align-middle">
-          <div>
+          <div className="flex w-52 flex-col align-middle md:w-80">
             <p className="text-2xl text-neutral-300"> Whitelist:</p>
-            <p className="text-m text-neutral-300"> 2 Signatures Required</p>
-            
+            <p className="text-m text-neutral-300"> 4 per wallet ( 2 signatures required )</p>
           </div>
-          <div>
-          </div>
-          
           <div className="flex w-52 space-x-2">
             {isWhitelistMintLive ? (
               <>
@@ -229,17 +208,16 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
                 >
                   60K Atlas
                 </Button>
-                
               </>
             ) : (
-              <p className="font-medium text-white">{`Coming in ${timeToWhitelist}`}</p>
+              <CountDown targetDate={launchDate.subtract(2, 'hours')} />
             )}
           </div>
         </div>
         <div className="flex justify-between align-middle">
-          <div>
+          <div className="flex w-52 flex-col align-middle md:w-80">
             <p className="text-2xl text-neutral-300"> Public: </p>
-            <p className="text-m text-neutral-300">For all</p>
+            <p className="text-m text-neutral-300">Unlimited per wallet</p>
           </div>
           <div className="flex w-52 space-x-2">
             {isPublicMintLive ? (
@@ -264,7 +242,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
                 </Button>
               </>
             ) : (
-              <p className="font-medium text-white">{`Coming in ${timeToLuanch}`}</p>
+              <CountDown targetDate={launchDate} />
             )}
           </div>
         </div>
