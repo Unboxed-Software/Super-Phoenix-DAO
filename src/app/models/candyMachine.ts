@@ -27,7 +27,7 @@ export const PUBLIC_MINTING_GROUP = {
 
 export const MINTING_GROUP = { ...FREELIST_MINTING_GROUP, ...WHITELIST_MINTING_GROUP, ...PUBLIC_MINTING_GROUP };
 
-export const mintWithPublicSOL = async (umi: Umi) => {
+export const mintWithPublicSOL = async (umi: Umi, priorityFees: number) => {
   const candyMachinePublicKey = publicKey(CM_ID);
 
   const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
@@ -40,7 +40,7 @@ export const mintWithPublicSOL = async (umi: Umi) => {
   const nftMint = generateSigner(umi);
   const sig = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
-    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: priorityFees }))
     .add(
       mintV2(umi, {
         candyMachine: candyMachine.publicKey,
@@ -67,7 +67,7 @@ export const mintWithPublicSOL = async (umi: Umi) => {
   return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };
 
-export const mintWithPublicToken = async (umi: Umi) => {
+export const mintWithPublicToken = async (umi: Umi, priorityFees: number) => {
   const candyMachinePublicKey = publicKey(CM_ID);
 
   const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
@@ -82,7 +82,7 @@ export const mintWithPublicToken = async (umi: Umi) => {
   const nftMint = generateSigner(umi);
   const sig = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
-    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: priorityFees }))
     .add(
       mintV2(umi, {
         candyMachine: candyMachine.publicKey,
@@ -110,7 +110,7 @@ export const mintWithPublicToken = async (umi: Umi) => {
   return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };
 
-export const mintWithFreelist = async (umi: Umi) => {
+export const mintWithFreelist = async (umi: Umi, priorityFees: number) => {
   const candyMachinePublicKey = publicKey(CM_ID);
   const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
 
@@ -127,7 +127,7 @@ export const mintWithFreelist = async (umi: Umi) => {
   const nftMint = generateSigner(umi);
   const sig = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
-    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: priorityFees }))
     .add(
       route(umi, {
         guard: 'allowList',
@@ -165,7 +165,7 @@ export const mintWithFreelist = async (umi: Umi) => {
   return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };
 
-export const mintWithWhitelistSOL = async (umi: Umi) => {
+export const mintWithWhitelistSOL = async (umi: Umi, priorityFees: number) => {
   const candyMachinePublicKey = publicKey(CM_ID);
   const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
 
@@ -185,7 +185,7 @@ export const mintWithWhitelistSOL = async (umi: Umi) => {
   const nftMint = generateSigner(umi);
   const sig1 = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
-    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: priorityFees }))
     .add(
       route(umi, {
         guard: 'allowList',
@@ -202,7 +202,7 @@ export const mintWithWhitelistSOL = async (umi: Umi) => {
 
   const sig2 = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
-    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: priorityFees }))
     .add(
       mintV2(umi, {
         candyMachine: candyMachine.publicKey,
@@ -232,7 +232,7 @@ export const mintWithWhitelistSOL = async (umi: Umi) => {
   return { tx: base58.deserialize(sig2.signature)[0], mint: nftMint.publicKey };
 };
 
-export const mintWithWhitelistToken = async (umi: Umi) => {
+export const mintWithWhitelistToken = async (umi: Umi, priorityFees: number) => {
   const candyMachinePublicKey = publicKey(CM_ID);
   const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
 
@@ -254,7 +254,7 @@ export const mintWithWhitelistToken = async (umi: Umi) => {
   const nftMint = generateSigner(umi);
   const sig1 = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
-    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: priorityFees }))
     .add(
       route(umi, {
         guard: 'allowList',
@@ -271,7 +271,7 @@ export const mintWithWhitelistToken = async (umi: Umi) => {
 
   const sig2 = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
-    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: priorityFees }))
     .add(
       mintV2(umi, {
         candyMachine: candyMachine.publicKey,

@@ -22,6 +22,7 @@ import RevealModal, { TIER_INFO } from './revealModal';
 import MintCount from './MintCount';
 import CountDown from './landing/CountDown';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
+import PriorityFeeSlider from './PriorityFeeSlider';
 
 dayjs.extend(relativeTime);
 
@@ -35,6 +36,7 @@ type Props = {
 
 export default function MintButtons({ candyGuard, umi, wallet }: Props) {
   const [isMinting, setIsMinting] = useState(false);
+  const [priorityFees, setPriorityFees] = useState<number>(10_000);
 
   const { setVisible } = useWalletModal();
 
@@ -75,19 +77,19 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
     let promise: ReturnType<typeof mintWithFreelist>;
     switch (mintingGroup) {
       case MINTING_GROUP.FL:
-        promise = mintWithFreelist(umi);
+        promise = mintWithFreelist(umi, priorityFees);
         break;
       case MINTING_GROUP.WLSOL:
-        promise = mintWithWhitelistSOL(umi);
+        promise = mintWithWhitelistSOL(umi, priorityFees);
         break;
       case MINTING_GROUP.WLSA:
-        promise = mintWithWhitelistToken(umi);
+        promise = mintWithWhitelistToken(umi, priorityFees);
         break;
       case MINTING_GROUP.PSOL:
-        promise = mintWithPublicSOL(umi);
+        promise = mintWithPublicSOL(umi, priorityFees);
         break;
       case MINTING_GROUP.PSA:
-        promise = mintWithPublicToken(umi);
+        promise = mintWithPublicToken(umi, priorityFees);
         break;
       default:
         throw new Error('Invalid payment method');
@@ -246,6 +248,10 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
           </div>
         </div>
         {tier && open && <RevealModal open={open} tier={tier} onClose={() => setOpen(false)} />}
+      </div>
+
+      <div className="flex mt-10 md:w-1/2 justify-center">
+        <PriorityFeeSlider priorityFee={priorityFees} setPriorityFee={setPriorityFees} />
       </div>
     </>
   );
