@@ -35,14 +35,14 @@ function Navbar() {
             Roadmap
           </a>
         </Tooltip>
-        <Tooltip content="Coming Soon">
+        {/* <Tooltip content="Coming Soon">
           <a href="#" className="tooltip cursor-default text-gray-400">
             Team
           </a>
-        </Tooltip>
-        {/* <a href="/team" className="cursor-pointer text-gray-300 hover:text-gray-100">
+        </Tooltip> */}
+        <a href="/team" className="cursor-pointer text-gray-300 hover:text-gray-100">
           Team
-        </a> */}
+        </a>
         <Tooltip content="Coming Soon">
           <a href="#" className="tooltip cursor-default text-gray-400">
             DAO
@@ -98,15 +98,15 @@ function Navbar() {
             <a href="/mint" className="text-gray-300 active:text-gray-100">
               Mint
             </a>
-            <a href="#" className="text-gray-500" onClick={handleLinkClick}>
+            <a href="#" className="cursor-pointer text-gray-300 active:text-gray-100" onClick={handleLinkClick}>
               Roadmap
             </a>
-            <a href="#" className="text-gray-500" onClick={handleLinkClick}>
-              Team
-            </a>
-            {/* <a href="/team" className="cursor-pointer text-gray-300 active:text-gray-100">
+            {/* <a href="#" className="text-gray-500" onClick={handleLinkClick}>
               Team
             </a> */}
+            <a href="/team" className="cursor-pointer text-gray-300 active:text-gray-100">
+              Team
+            </a>
             <a href="#" className="text-gray-500" onClick={handleLinkClick}>
               DAO
             </a>

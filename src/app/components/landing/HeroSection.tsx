@@ -15,7 +15,7 @@ export default function HeroSection({ header, description, imagePath, imageLocat
       <div
         className={`flex w-full flex-col justify-evenly align-middle ${imageLocation === 'right' ? 'lg:flex-row-reverse lg:text-end' : 'lg:flex-row'}`}
       >
-        <div className="w-100 relative  aspect-video lg:h-[300px] lg:w-[500px]">
+        <div className="relative mx-1 aspect-video lg:h-[300px] lg:w-[500px]">
           <Image
             sizes="(max-width: 768px) 90vw, 40vw"
             quality={50}
@@ -25,7 +25,7 @@ export default function HeroSection({ header, description, imagePath, imageLocat
             style={{ objectFit: 'cover' }}
           />
         </div>
-        <div className="mx-0 my-5 flex flex-col  justify-center lg:mx-10 lg:my-10">
+        <div className="mx-0 my-5 flex flex-col justify-center lg:mx-10 lg:my-10 lg:w-1/2">
           <h1 className={`mb-2 text-white ${size === 'md' ? 'text-2xl' : 'text-4xl'}`}>{header.toUpperCase()}</h1>
           <p className="text-lg text-neutral-400">{description}</p>
         </div>
