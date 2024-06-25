@@ -15,11 +15,14 @@ import Link from 'next/link';
 import { CandyGuard, fetchCandyMachine } from '@metaplex-foundation/mpl-candy-machine';
 import { Umi, formatDateTime, publicKey } from '@metaplex-foundation/umi';
 import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { WalletContextState } from '@solana/wallet-adapter-react';
 import { fetchDigitalAsset } from '@metaplex-foundation/mpl-token-metadata';
 import RevealModal, { TIER_INFO } from './revealModal';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import MintCount from './MintCount';
+
+dayjs.extend(relativeTime);
 
 const EXPLORER_LINK = process.env.NEXT_PUBLIC_SOLANA_EXPLORER_LINK;
 
@@ -37,10 +40,25 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
   const [mintedCount, setMintedCount] = useState(0);
 
   const { toast } = useToast();
-  const timeUntilLaunch = useMemo(() => {
+
+  const {
+    timeToLuanch,
+    timeToLaunchInMintuesInMintues,
+    timeToWhitelistInMuntues,
+    timeToWhitelist,
+    timeToFreelistInMuntues,
+    timeToFreelist,
+  } = useMemo(() => {
     // @ts-expect-error - candyGuard type is not correct
     const startDate = dayjs(formatDateTime(candyGuard.guards.startDate.value.date));
-    return startDate.diff(dayjs(), 'minute');
+    return {
+      timeToLaunchInMintuesInMintues: startDate.diff(dayjs(), 'minute'),
+      timeToLuanch: startDate.toNow(),
+      timeToFreelistInMuntues: startDate.subtract(4, 'hours').diff(dayjs(), 'minute'),
+      timeToFreelist: startDate.subtract(4, 'hours').toNow(),
+      timeToWhitelistInMuntues: startDate.subtract(2, 'hours').diff(dayjs(), 'minute'),
+      timeToWhitelist: startDate.subtract(2, 'hours').toNow(),
+    };
   }, [candyGuard]);
 
   const updateMintedCount = () => {
@@ -138,9 +156,9 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
     }
   };
 
-  const isFreeMintLive = timeUntilLaunch <= 240 && timeUntilLaunch > 0;
-  const isWhitelistMintLive = timeUntilLaunch <= 120 && timeUntilLaunch > 0;
-  const isPublicMintLive = timeUntilLaunch <= 0;
+  const isFreeMintLive = timeToFreelistInMuntues <= 0;
+  const isWhitelistMintLive = timeToWhitelistInMuntues <= 0;
+  const isPublicMintLive = timeToLaunchInMintuesInMintues <= 0;
 
   return (
     <>
@@ -162,15 +180,21 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
             <p className="text-2xl text-neutral-300"> Freelist: </p>
           </div>
           <div className="flex w-52 space-x-2">
-            <Button
-              isLoading={isMinting}
-              disabled={!wallet.connected || isMinting || !isFreeMintLive}
-              onClick={() => handleMinting(MINTING_GROUP.FL)}
-              variant="gold"
-              className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
-            >
-              Free
-            </Button>
+            {isFreeMintLive ? (
+              <>
+                <Button
+                  isLoading={isMinting}
+                  disabled={!wallet.connected || isMinting || !isFreeMintLive}
+                  onClick={() => handleMinting(MINTING_GROUP.FL)}
+                  variant="gold"
+                  className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+                >
+                  Free
+                </Button>
+              </>
+            ) : (
+              <p className="font-medium text-white">{`Coming in ${timeToFreelist}`}</p>
+            )}
           </div>
         </div>
         <div className="flex justify-between align-middle">
@@ -178,24 +202,30 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
             <p className="text-2xl text-neutral-300"> Whitelist: </p>
           </div>
           <div className="flex w-52 space-x-2">
-            <Button
-              isLoading={isMinting}
-              disabled={!wallet.connected || isMinting || !isWhitelistMintLive}
-              onClick={() => handleMinting(MINTING_GROUP.WLSOL)}
-              variant="gold"
-              className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
-            >
-              1.25 SOL
-            </Button>
-            <Button
-              isLoading={isMinting}
-              disabled={!wallet.connected || isMinting || !isWhitelistMintLive}
-              onClick={() => handleMinting(MINTING_GROUP.WLSA)}
-              variant="gold"
-              className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
-            >
-              60K Atlas
-            </Button>
+            {isWhitelistMintLive ? (
+              <>
+                <Button
+                  isLoading={isMinting}
+                  disabled={!wallet.connected || isMinting || !isWhitelistMintLive}
+                  onClick={() => handleMinting(MINTING_GROUP.WLSOL)}
+                  variant="gold"
+                  className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+                >
+                  1.25 SOL
+                </Button>
+                <Button
+                  isLoading={isMinting}
+                  disabled={!wallet.connected || isMinting || !isWhitelistMintLive}
+                  onClick={() => handleMinting(MINTING_GROUP.WLSA)}
+                  variant="gold"
+                  className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+                >
+                  60K Atlas
+                </Button>
+              </>
+            ) : (
+              <p className="font-medium text-white">{`Coming in ${timeToWhitelist}`}</p>
+            )}
           </div>
         </div>
         <div className="flex justify-between align-middle">
@@ -203,24 +233,30 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
             <p className="text-2xl text-neutral-300"> Public: </p>
           </div>
           <div className="flex w-52 space-x-2">
-            <Button
-              isLoading={isMinting}
-              disabled={!wallet.connected || isMinting || !isPublicMintLive}
-              onClick={() => handleMinting(MINTING_GROUP.PSOL)}
-              variant="gold"
-              className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
-            >
-              1.5 SOL
-            </Button>
-            <Button
-              isLoading={isMinting}
-              disabled={!wallet.connected || isMinting || !isPublicMintLive}
-              onClick={() => handleMinting(MINTING_GROUP.PSA)}
-              variant="gold"
-              className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
-            >
-              73k Atlas
-            </Button>
+            {isPublicMintLive ? (
+              <>
+                <Button
+                  isLoading={isMinting}
+                  disabled={!wallet.connected || isMinting || !isPublicMintLive}
+                  onClick={() => handleMinting(MINTING_GROUP.PSOL)}
+                  variant="gold"
+                  className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+                >
+                  1.5 SOL
+                </Button>
+                <Button
+                  isLoading={isMinting}
+                  disabled={!wallet.connected || isMinting || !isPublicMintLive}
+                  onClick={() => handleMinting(MINTING_GROUP.PSA)}
+                  variant="gold"
+                  className="w-20 appearance-none rounded-md border border-neutral-500 p-3 font-medium leading-tight text-neutral-300"
+                >
+                  73k Atlas
+                </Button>
+              </>
+            ) : (
+              <p className="font-medium text-white">{`Coming in ${timeToLuanch}`}</p>
+            )}
           </div>
         </div>
         {tier && open && <RevealModal open={open} tier={tier} onClose={() => setOpen(false)} />}
