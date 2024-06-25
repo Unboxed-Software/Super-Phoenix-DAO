@@ -135,8 +135,8 @@ export const mintWithFreelist = async (umi: Umi) => {
         group: MINTING_GROUP.FL,
         routeArgs: {
           path: 'proof',
-          merkleRoot: bs58.decode(res.merkleRoot),
-          merkleProof: res.merkleProof.map((p) => bs58.decode(p)),
+          merkleRoot: bs58.decode(res.merkleRoot!),
+          merkleProof: res.merkleProof!.map((p) => bs58.decode(p)),
         },
       }),
     )
@@ -150,7 +150,7 @@ export const mintWithFreelist = async (umi: Umi) => {
         tokenStandard: candyMachine.tokenStandard,
         group: MINTING_GROUP.FL,
         mintArgs: {
-          allowList: { merkleRoot: bs58.decode(res.merkleRoot) },
+          allowList: { merkleRoot: bs58.decode(res.merkleRoot!) },
           mintLimit: { id: limitID },
         },
       }),
@@ -193,8 +193,8 @@ export const mintWithWhitelistSOL = async (umi: Umi) => {
         group: MINTING_GROUP.WLSOL,
         routeArgs: {
           path: 'proof',
-          merkleRoot: bs58.decode(res.merkleRoot),
-          merkleProof: res.merkleProof.map((p) => bs58.decode(p)),
+          merkleRoot: bs58.decode(res.merkleRoot!),
+          merkleProof: res.merkleProof!.map((p) => bs58.decode(p)),
         },
       }),
     )
@@ -213,7 +213,7 @@ export const mintWithWhitelistSOL = async (umi: Umi) => {
         tokenStandard: candyMachine.tokenStandard,
         group: MINTING_GROUP.WLSOL,
         mintArgs: {
-          allowList: { merkleRoot: bs58.decode(res.merkleRoot) },
+          allowList: { merkleRoot: bs58.decode(res.merkleRoot!) },
           mintLimit: { id: limitID },
           solPayment: {
             destination: solDestination,
@@ -262,8 +262,8 @@ export const mintWithWhitelistToken = async (umi: Umi) => {
         group: MINTING_GROUP.WLSA,
         routeArgs: {
           path: 'proof',
-          merkleRoot: bs58.decode(res.merkleRoot),
-          merkleProof: res.merkleProof.map((p) => bs58.decode(p)),
+          merkleRoot: bs58.decode(res.merkleRoot!),
+          merkleProof: res.merkleProof!.map((p) => bs58.decode(p)),
         },
       }),
     )
@@ -282,7 +282,7 @@ export const mintWithWhitelistToken = async (umi: Umi) => {
         tokenStandard: candyMachine.tokenStandard,
         group: MINTING_GROUP.WLSA,
         mintArgs: {
-          allowList: { merkleRoot: bs58.decode(res.merkleRoot) },
+          allowList: { merkleRoot: bs58.decode(res.merkleRoot!) },
           mintLimit: { id: limitID },
           tokenPayment: {
             destinationAta: tokenPaymentDest,
