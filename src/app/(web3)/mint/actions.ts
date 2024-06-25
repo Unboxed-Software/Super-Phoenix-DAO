@@ -43,8 +43,12 @@ export async function validateAccountForEarlyMinting(accountId: string, earlyMin
     throw new Error('Internal server Error');
   }
 
-  const freelist = await parseAndCheckList(`${NEXT_PUBLIC_BASE_URL}/lists/freelist.csv`);
-  const whitelist = await parseAndCheckList(`${NEXT_PUBLIC_BASE_URL}/lists/whitelist.csv`);
+  const freelist = await parseAndCheckList(
+    'https://shdw-drive.genesysgo.net/Drz6cRx664L9zH4Gir6Gw1LpzTwhbdNRzfwAZSFeD56v/spd_freelist.csv',
+  );
+  const whitelist = await parseAndCheckList(
+    'https://shdw-drive.genesysgo.net/Drz6cRx664L9zH4Gir6Gw1LpzTwhbdNRzfwAZSFeD56v/spd_whitelist.csv',
+  );
 
   let allowList: string[] = [];
 
@@ -62,7 +66,10 @@ export async function validateAccountForEarlyMinting(accountId: string, earlyMin
 
   const isFound = allowList.find((a) => a === accountId);
   if (!isFound) {
-    throw new Error('Account not found in allow list');
+    return {
+      status: 400,
+      error: 'Account not found in allow list',
+    };
   }
 
   return {

@@ -116,6 +116,8 @@ export const mintWithFreelist = async (umi: Umi) => {
 
   const res = await validateAccountForEarlyMinting(umi.identity.publicKey, MINTING_GROUP.FL);
 
+  if (res.status !== 200) throw new Error(res.error);
+
   const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
   const guardGroup = candyGuard.groups.find((g) => g.label === MINTING_GROUP.FL);
 
@@ -168,6 +170,8 @@ export const mintWithWhitelistSOL = async (umi: Umi) => {
   const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
 
   const res = await validateAccountForEarlyMinting(umi.identity.publicKey, MINTING_GROUP.WLSOL);
+
+  if (res.status !== 200) throw new Error(res.error);
 
   const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
   const guardGroup = candyGuard.groups.find((g) => g.label === MINTING_GROUP.WLSOL);
@@ -233,6 +237,8 @@ export const mintWithWhitelistToken = async (umi: Umi) => {
   const candyMachine = await fetchCandyMachine(umi, candyMachinePublicKey);
 
   const res = await validateAccountForEarlyMinting(umi.identity.publicKey, MINTING_GROUP.WLSA);
+
+  if (res.status !== 200) throw new Error(res.error);
 
   const candyGuard = await fetchCandyGuard(umi, candyMachine.mintAuthority);
   const guardGroup = candyGuard.groups.find((g) => g.label === MINTING_GROUP.WLSA);
