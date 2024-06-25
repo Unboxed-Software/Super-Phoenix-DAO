@@ -250,7 +250,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
         {tier && open && <RevealModal open={open} tier={tier} onClose={() => setOpen(false)} />}
       </div>
 
-      <div className="flex mt-10 md:w-1/2 justify-center">
+      <div className="mt-10 flex justify-center md:w-1/2">
         <PriorityFeeSlider priorityFee={priorityFees} setPriorityFee={setPriorityFees} />
       </div>
     </>

@@ -6,7 +6,7 @@ interface PriorityFeeSliderProps {
 function PriorityFeeSlider(props: PriorityFeeSliderProps) {
   const { priorityFee, setPriorityFee } = props;
   return (
-    <div className="w mx-3 mb-8 text-center font-semplicita text-lg font-light text-stone-200 md:text-xl lg:w-3/4">
+    <div className="mx-3 mb-8 text-center font-semplicita text-lg font-light text-stone-200 md:text-xl lg:w-3/4">
       <p>{`Priority Fee: ${priorityFee.toLocaleString()} microlamports`}</p>
       <input
         type="range"
@@ -15,12 +15,12 @@ function PriorityFeeSlider(props: PriorityFeeSliderProps) {
         step="5000"
         value={priorityFee}
         onChange={(e) => setPriorityFee(parseInt(e.target.value, 10))}
-        className="mt-4 w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 slider"
+        className="slider mt-4 h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700"
       />
       <style jsx>{`
         .slider::-webkit-slider-thumb {
-          background-color: #998E52;
-          border: 2px solid #0A0A12;
+          background-color: #998e52;
+          border: 2px solid #0a0a12;
           border-radius: 50%;
           height: 20px;
           width: 20px;
@@ -30,8 +30,8 @@ function PriorityFeeSlider(props: PriorityFeeSliderProps) {
         }
 
         .slider::-moz-range-thumb {
-          background-color: #998E52;
-          border: 2px solid #0A0A12;
+          background-color: #998e52;
+          border: 2px solid #0a0a12;
           border-radius: 50%;
           height: 20px;
           width: 20px;
@@ -39,8 +39,8 @@ function PriorityFeeSlider(props: PriorityFeeSliderProps) {
         }
 
         .slider::-ms-thumb {
-          background-color: #998E52;
-          border: 2px solid #0A0A12;
+          background-color: #998e52;
+          border: 2px solid #0a0a12;
           border-radius: 50%;
           height: 20px;
           width: 20px;
@@ -48,7 +48,7 @@ function PriorityFeeSlider(props: PriorityFeeSliderProps) {
         }
 
         .slider {
-          background-color: #1E1E1E;
+          background-color: #1e1e1e;
         }
       `}</style>
     </div>
