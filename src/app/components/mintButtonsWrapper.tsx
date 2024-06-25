@@ -11,11 +11,12 @@ export default function MintButtonsWrapper() {
   return isLoaded ? (
     <MintButtons wallet={wallet} umi={umi} candyGuard={candyGuard!} />
   ) : (
+
     <div className="flex flex-col space-y-2">
+      {/* <Skeleton className="h-[40px] w-[300px] rounded-xl" />
       <Skeleton className="h-[40px] w-[300px] rounded-xl" />
       <Skeleton className="h-[40px] w-[300px] rounded-xl" />
-      <Skeleton className="h-[40px] w-[300px] rounded-xl" />
-      <Skeleton className="h-[40px] w-[300px] rounded-xl" />
+      <Skeleton className="h-[40px] w-[300px] rounded-xl" /> */}
     </div>
   );
 }

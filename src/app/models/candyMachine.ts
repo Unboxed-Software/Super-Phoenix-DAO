@@ -179,7 +179,7 @@ export const mintWithWhitelistSOL = async (umi: Umi) => {
   const solDestination = guardGroup?.guards.solPayment.value.destination;
 
   const nftMint = generateSigner(umi);
-  const sig = await transactionBuilder()
+  const sig1 = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
     .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
     .add(
@@ -194,6 +194,11 @@ export const mintWithWhitelistSOL = async (umi: Umi) => {
         },
       }),
     )
+    .sendAndConfirm(umi);
+
+  const sig2 = await transactionBuilder()
+    .add(setComputeUnitLimit(umi, { units: 800_000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
     .add(
       mintV2(umi, {
         candyMachine: candyMachine.publicKey,
@@ -214,12 +219,13 @@ export const mintWithWhitelistSOL = async (umi: Umi) => {
     )
     .sendAndConfirm(umi);
 
-  if (sig.result.value.err) {
-    console.log(sig.result.value.err);
+  if (sig2.result.value.err || sig1.result.value.err) {
+    console.log(sig1.result.value.err);
+    console.log(sig2.result.value.err);
     throw new Error('Error, Something went wrong while minting, please try again.');
   }
 
-  return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
+  return { tx: base58.deserialize(sig2.signature)[0], mint: nftMint.publicKey };
 };
 
 export const mintWithWhitelistToken = async (umi: Umi) => {
@@ -240,7 +246,7 @@ export const mintWithWhitelistToken = async (umi: Umi) => {
   const tokenPaymentDest = guardGroup?.guards.tokenPayment.value.destinationAta;
 
   const nftMint = generateSigner(umi);
-  const sig = await transactionBuilder()
+  const sig1 = await transactionBuilder()
     .add(setComputeUnitLimit(umi, { units: 800_000 }))
     .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
     .add(
@@ -255,6 +261,11 @@ export const mintWithWhitelistToken = async (umi: Umi) => {
         },
       }),
     )
+    .sendAndConfirm(umi);
+
+  const sig2 = await transactionBuilder()
+    .add(setComputeUnitLimit(umi, { units: 800_000 }))
+    .add(setComputeUnitPrice(umi, { microLamports: 10000 }))
     .add(
       mintV2(umi, {
         candyMachine: candyMachine.publicKey,
@@ -276,10 +287,11 @@ export const mintWithWhitelistToken = async (umi: Umi) => {
     )
     .sendAndConfirm(umi);
 
-  if (sig.result.value.err) {
-    console.log(sig.result.value.err);
+  if (sig2.result.value.err || sig1.result.value.err) {
+    console.log(sig1.result.value.err);
+    console.log(sig2.result.value.err);
     throw new Error('Error, Something went wrong while minting, please try again.');
   }
 
-  return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
+  return { tx: base58.deserialize(sig2.signature)[0], mint: nftMint.publicKey };
 };

@@ -174,10 +174,12 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
         </div>
       )}
 
-      <div className="container flex flex-col space-y-2 md:w-1/2">
+      <div className="container flex flex-col space-y-5 md:w-1/2">
         <div className="flex justify-between align-middle">
           <div>
             <p className="text-2xl text-neutral-300"> Freelist: </p>
+            <p className="text-m text-neutral-300">Must be on freelist</p>
+
           </div>
           <div className="flex w-52 space-x-2">
             {isFreeMintLive ? (
@@ -199,8 +201,13 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
         </div>
         <div className="flex justify-between align-middle">
           <div>
-            <p className="text-2xl text-neutral-300"> Whitelist: </p>
+            <p className="text-2xl text-neutral-300"> Whitelist:</p>
+            <p className="text-m text-neutral-300"> 2 Signatures Required</p>
+            
           </div>
+          <div>
+          </div>
+          
           <div className="flex w-52 space-x-2">
             {isWhitelistMintLive ? (
               <>
@@ -222,6 +229,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
                 >
                   60K Atlas
                 </Button>
+                
               </>
             ) : (
               <p className="font-medium text-white">{`Coming in ${timeToWhitelist}`}</p>
@@ -231,6 +239,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
         <div className="flex justify-between align-middle">
           <div>
             <p className="text-2xl text-neutral-300"> Public: </p>
+            <p className="text-m text-neutral-300">For all</p>
           </div>
           <div className="flex w-52 space-x-2">
             {isPublicMintLive ? (
