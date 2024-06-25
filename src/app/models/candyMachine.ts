@@ -59,6 +59,11 @@ export const mintWithPublicSOL = async (umi: Umi) => {
     )
     .sendAndConfirm(umi);
 
+  if (sig.result.value.err) {
+    console.log(sig.result.value.err);
+    throw new Error('Error, Something went wrong while minting, please try again.');
+  }
+
   return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };
 
@@ -96,6 +101,11 @@ export const mintWithPublicToken = async (umi: Umi) => {
       }),
     )
     .sendAndConfirm(umi, { send: { skipPreflight: true } });
+
+  if (sig.result.value.err) {
+    console.log(sig.result.value.err);
+    throw new Error('Error, Something went wrong while minting, please try again.');
+  }
 
   return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };
@@ -144,6 +154,11 @@ export const mintWithFreelist = async (umi: Umi) => {
       }),
     )
     .sendAndConfirm(umi);
+
+  if (sig.result.value.err) {
+    console.log(sig.result.value.err);
+    throw new Error('Error, Something went wrong while minting, please try again.');
+  }
 
   return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };
@@ -198,6 +213,11 @@ export const mintWithWhitelistSOL = async (umi: Umi) => {
       }),
     )
     .sendAndConfirm(umi);
+
+  if (sig.result.value.err) {
+    console.log(sig.result.value.err);
+    throw new Error('Error, Something went wrong while minting, please try again.');
+  }
 
   return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };
@@ -255,6 +275,11 @@ export const mintWithWhitelistToken = async (umi: Umi) => {
       }),
     )
     .sendAndConfirm(umi);
+
+  if (sig.result.value.err) {
+    console.log(sig.result.value.err);
+    throw new Error('Error, Something went wrong while minting, please try again.');
+  }
 
   return { tx: base58.deserialize(sig.signature)[0], mint: nftMint.publicKey };
 };

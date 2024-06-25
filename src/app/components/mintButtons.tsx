@@ -59,7 +59,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
     setIsMinting(true);
     toast({
       title: 'Minting your NFT...',
-      description: 'Please confirm the transaction and then wait for your NFT to get mintted',
+      description: 'Please confirm the transaction and then wait for your NFT to get minted',
       duration: 60000,
     });
 
@@ -86,12 +86,19 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
 
     try {
       const { tx, mint } = await promise;
-      const mintMetadata = await fetchDigitalAsset(umi, mint);
-      const tier = mintMetadata.metadata.name as keyof typeof TIER_INFO;
 
-      if (TIER_INFO[tier]) {
-        setTier(tier);
-        setOpen(true);
+      try {
+        const mintMetadata = await fetchDigitalAsset(umi, mint, {
+          commitment: 'processed',
+        });
+        const tier = mintMetadata.metadata.name as keyof typeof TIER_INFO;
+
+        if (TIER_INFO[tier]) {
+          setTier(tier);
+          setOpen(true);
+        }
+      } catch (err) {
+        console.log('Error fetching metadata', err);
       }
 
       updateMintedCount();
@@ -99,7 +106,7 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
       toast({
         title: 'Minted successfully',
         className: 'bg-emerald-500',
-        description: 'Your NFT has been mintted successfully',
+        description: 'Your NFT has been minted successfully',
         action: (
           <Link target="_blank" href={`${EXPLORER_LINK}/${tx}`}>
             <ToastAction
@@ -112,11 +119,11 @@ export default function MintButtons({ candyGuard, umi, wallet }: Props) {
         ),
       });
     } catch (err: any) {
-      console.log(`ERROR\n\n\n${err}\n\n`);
-      if (err.message.includes('maximum number of allowed mints was reached')) {
+      console.log('ERROR', err);
+      if (err.message?.includes('maximum number of allowed mints was reached')) {
         toast({
           title: 'Maximum number of allowed mints was reached',
-          description: 'Please try again when the public mint goes live',
+          description: 'Please try again with the public mint',
           variant: 'destructive',
         });
       } else {
